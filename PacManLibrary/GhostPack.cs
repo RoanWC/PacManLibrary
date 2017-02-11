@@ -58,6 +58,7 @@ namespace PacManLibrary
         /// <param name="g">ghost to be added to the list</param>
         public void Add(Ghost g)
         {
+            Ghosts.Add(g);
 
         }
     }
