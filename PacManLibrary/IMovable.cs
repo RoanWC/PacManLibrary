@@ -7,9 +7,28 @@ using Microsoft.Xna.Framework;
 
 namespace PacManLibrary
 {
+    public enum Direction
+    {
+        up,
+        down,
+        left,
+        right
+    };
+
     public interface IMovable
     {
-        
+
+
+        Vector2 Position
+        {
+            get;
+            set;
+        }
+
+
+
+
+        void move();
 
 
     }
