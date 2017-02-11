@@ -9,12 +9,8 @@ namespace PacManLibrary
 {
     public interface IMovable
     {
-        public ve direction
-        {
-            get
-            {
-            return direction;
-            }
-        }
+        
+
+
     }
 }
