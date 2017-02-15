@@ -12,13 +12,16 @@ namespace PacManLibrary
     {
         public void tile(int x, int y)
         {
-            this.x = x;
-            this.y = y;
+            //Not 100% sure about this because you cant use the newly created vector.
+            Vector2 vector;
+            vector.X = x;
+            vector.Y = y;
         }
 
         public Vector2 Position()
         {
-            return;
+            //What is the point of a position of a tile?
+            return new;
         }
 
         public abstract ICollidable Member();
@@ -27,7 +30,7 @@ namespace PacManLibrary
         public abstract bool IsEmpty();
         public float GetDistance(Vector2 goal)
         {
-
+            //Get the distance for what exactly? Between what?
         }
     }
 }
