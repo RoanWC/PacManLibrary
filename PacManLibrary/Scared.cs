@@ -8,19 +8,69 @@ using Microsoft.Xna.Framework;
 
 namespace PacManLibrary
 {
+    /// <summary>
+    /// The Scared class encapsulates the required behaviour when a Ghost is in scared state. The Ghost will
+    /// change direction immediately upon instantiating the Scared state. Each move is subsequently randomly
+    /// chosen from the available tiles.
+    /// will
+    /// </summary>
     public class Scared : IGhostState
     {
         private Ghost ghost;
         private Maze maze;
 
+        /// <summary>
+        /// Two-parameter constructor to initialize the Scared state. 
+        /// It requires a handle to the Ghost who is scared
+        /// as well as the Maze to know which tiles are available.
+        /// </summary>
+        /// <param name="ghost"></param>
+        /// <param name="maze"></param>
         public Scared(Ghost ghost, Maze maze)
         {
+            //change direction and make a 180 degree turn.
+            switch (ghost.Direction)
+            {
+                case Direction.up:
+                    ghost.Direction = Direction.down;
+                    break;
+                case Direction.down:
+                    ghost.Direction = Direction.up;
+                    break;
+                case Direction.left:
+                    ghost.Direction = Direction.right;
+                    break;
+                case Direction.right:
+                    ghost.Direction = Direction.left;
+                    break;
+            }
+
             this.ghost = ghost;
             this.maze = maze;
         }
+        /// <summary>
+        /// This method is invoked to move the scared Ghost to the random available tile.
+        /// Everytime a Ghost moves, we have to do two things: update the Ghost's Position
+        /// and update the Ghosts's Direction. This indicates the direction in which it is moving, 
+        /// and it is required to make sure that the Ghosts doesn't turn back to it's previous
+        /// position (i.e., to avoid 180 degree turns) (used by the Maze class's GetAvailableNeighbours
+        /// method)
+        /// </summary>
         public void move()
         {
+            Tile current = maze[(int)ghost.Position.X, (int)ghost.Position.Y];
+            List<Tile> places = maze.GetAvailableNeighbours(ghost.Position, ghost.Direction);
+            int numPlaces = places.Count;
 
+            if (numPlaces == 0)
+            {
+                throw new Exception("Nowhere to go");
+            }
+            Random rand = new Random();
+            int choice = rand.Next(numPlaces);
+            //determine direction
+
+            if(places[choice].Position.X == ghost.Position)
         }
     }
 }
