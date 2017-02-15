@@ -10,10 +10,10 @@ namespace PacManLibrary
 {
     public abstract class Tile
     {
+        private Vector2 vector;
         public void tile(int x, int y)
         {
             //Not 100% sure about this because you cant use the newly created vector.
-            Vector2 vector;
             vector.X = x;
             vector.Y = y;
         }
@@ -21,7 +21,7 @@ namespace PacManLibrary
         public Vector2 Position()
         {
             //What is the point of a position of a tile?
-            return new;
+            return vector;
         }
 
         public abstract ICollidable Member();
