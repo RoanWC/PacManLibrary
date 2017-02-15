@@ -8,7 +8,7 @@ using Microsoft.Xna.Framework;
 
 namespace PacManLibrary
 {
-    public interface IColidable
+    public interface ICollidable
     {
     }
 }

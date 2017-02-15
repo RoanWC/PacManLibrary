@@ -10,5 +10,23 @@ namespace PacManLibrary
 {
     public class Pacman
     {
+        private GameState controller;
+        private Maze maze;
+
+
+        public Pacman(GameState controller)
+        {
+            this.controller = controller;
+        }
+        public void Move(Direction dir)
+        {
+            dir += 1;
+        }
+        public void CheckCollisions()
+        {
+
+        }
+        
+
     }
 }
