@@ -18,6 +18,11 @@ namespace PacManLibrary
     public interface IMovable
     {
 
+        Direction direction
+        {
+            get;
+            set;
+        }
 
         Vector2 Position
         {
