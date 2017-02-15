@@ -20,7 +20,7 @@ namespace PacManLibrary
         }
         public void Move(Direction dir)
         {
-            dir += 1;
+            // look at scared.cs
         }
         public void CheckCollisions()
         {

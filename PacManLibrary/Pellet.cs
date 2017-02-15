@@ -8,7 +8,18 @@ using Microsoft.Xna.Framework;
 
 namespace PacManLibrary
 {
-    public class Pellet
+    public class Pellet : ICollidable
     {
+        private int points;
+
+        public int Points
+        {
+            get { return points; }
+            set { points = value; }
+        }
+        public void Collide()
+        {
+
+        }
     }
 }

@@ -10,5 +10,12 @@ namespace PacManLibrary
 {
     public interface ICollidable
     {
+        // delegates 
+         int Points
+        {
+            get;
+            set;
+        }
+        void Collide();
     }
 }

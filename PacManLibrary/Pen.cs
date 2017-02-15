@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 using System.Timers;
 
-namespace PacManLib
+namespace PacManLibrary
 {
     /// <summary>
     /// The Pen represents the area where Ghosts go when the game starts, when they are eaten or when

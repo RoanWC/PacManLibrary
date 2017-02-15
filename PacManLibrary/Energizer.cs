@@ -8,7 +8,24 @@ using Microsoft.Xna.Framework;
 
 namespace PacManLibrary
 {
-    public class Energizer
+    public class Energizer : ICollidable
     {
+        private int points;
+        private GhostPack ghosts;
+
+
+        public Energizer(GhostPack ghosts)
+        {
+            this.ghosts = ghosts;
+        }
+        public int Points
+        {
+            get { return points; }
+            set { points = value; }
+        }
+        public void Collide()
+        {
+
+        }
     }
 }
