@@ -24,7 +24,33 @@ namespace PacManLibrary
 
         public void move()
         {
-            throw new NotImplementedException();
+            Tile current = maze[(int)ghost.Position.X, (int)ghost.Position.Y];
+            List<Tile> places = maze.GetAvailableNeighbours(ghost.Position, ghost.Direction);
+            int numPosible = places.Count;
+            int i = 0;
+            int choice = 0;
+            float dist = places[i].GetDistance(target);
+
+            for (int i = 0; i < numPosible; i++)
+            {
+                if (places[i].GetDistance(target) < dist)
+                {
+                    dist = places[i].GetDistance(target);
+                    choice = i;
+                }
+            }
+
+            if (places[choice].Position.X == ghost.Position.X + 1)
+                ghost.Direction = Direction.Right;
+            else if (places[choice].Position.X == ghost.Position.X - 1)
+                ghost.Direction = Direction.Left;
+            else if (places[choice].Position.Y == ghost.Position.Y - 1)
+                ghost.Direction = Direction.Up;
+            else
+                ghost.Direction = Direction.Down;
+            ghost.Position = places[choice].Position;
+
+
         }
     }
 }
