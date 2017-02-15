@@ -70,7 +70,14 @@ namespace PacManLibrary
             int choice = rand.Next(numPlaces);
             //determine direction
 
-            if(places[choice].Position.X == ghost.Position)
+            if (places[choice].Position.X == ghost.Position.X + 1)
+                ghost.Direction = Direction.right;
+            else if (places[choice].Position.X == ghost.Position.X - 1)
+                ghost.Direction = Direction.left;
+            else if (places[choice].Position.Y == ghost.Position.Y - 1)
+                ghost.direction = Direction.up;
+            else
+                ghost.Position = places[choice].Position;
         }
     }
 }
