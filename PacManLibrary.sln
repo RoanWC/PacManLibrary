@@ -6,9 +6,6 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PacManLibrary", "PacManLibrary\PacManLibrary.csproj", "{C82FE47D-DADA-4891-BF92-F85392D76430}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{5DFE65F5-963D-4258-B74D-6D802D1B3F2B}"
-	ProjectSection(SolutionItems) = preProject
-		..\..\..\Desktop\Assignment2_-_Pacman_Phase_1.docx = ..\..\..\Desktop\Assignment2_-_Pacman_Phase_1.docx
-	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
