@@ -10,11 +10,13 @@ namespace PacManLibrary
 {
     public class Ghost : IMovable
     {
+        public Delegate ghostState;
+
         private Pacman pacman;
         private Vector2 target;
         private Pen pen;
         private Maze maze;
-        private Direction direction;
+        
         private Color color;
         private IGhostState currentState;
         private Timer scared;
@@ -29,7 +31,25 @@ namespace PacManLibrary
                 this.Position = value;
             }
         }
+        public Direction direction
+        {
+            get;
+            set;
+        }
 
+        public Ghost(GameState g, int x, int y, Vector2 target, IGhostState state, Color color)
+        {
+            this.pacman = g.Pacman;
+            Position = new Vector2(x, y);
+            this.target = target;
+            currentState = state;
+            this.color = color;
+
+        }
+        public void changeState(IGhostState state)
+        {
+
+        }
 
 
         public void move()

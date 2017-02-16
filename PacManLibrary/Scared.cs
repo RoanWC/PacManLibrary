@@ -59,7 +59,7 @@ namespace PacManLibrary
         public void move()
         {
             Tile current = maze[(int)ghost.Position.X, (int)ghost.Position.Y];
-            List<Tile> places = maze.GetAvailableNeighbours(ghost.Position, ghost.Direction);
+            List<Tile> places = maze.GetAvailableNeighbours(ghost.Position, ghost.direction);
             int numPlaces = places.Count;
 
             if (numPlaces == 0)
@@ -75,9 +75,9 @@ namespace PacManLibrary
             else if (places[choice].Position.X == ghost.Position.X - 1)
                 ghost.Direction = Direction.left;
             else if (places[choice].Position.Y == ghost.Position.Y - 1)
-                ghost.direction = Direction.up;
+                ghost.Direction = Direction.up;
             else
-                ghost.direction = Direction.down;
+                ghost.Direction = Direction.down;
 
             ghost.Position = places[choice].Position;
         }
