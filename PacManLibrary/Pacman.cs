@@ -11,25 +11,36 @@ namespace PacManLibrary
     public class Pacman
     {
         private GameState controller;
-        private GhostPack ghosts;
-        private Ghost ghost1; 
+        private List<Ghost> ghosts;
+        private Vector2 position;
         private Maze maze;
 
 
-        public Pacman(GameState controller)
+        public Pacman(GameState controller, int x, int y)
         {
             this.controller = controller;
-            this.ghosts = controller.Ghostpack;
+            this.ghosts = controller.Ghostpack.Ghosts;
+            this.position = new Vector2(x,y);
         }
         public void Move(Direction dir)
         {
             // look at scared.cs
         }
+        public Vector2 PacManPosition
+        {
+            get { return this.position; }
+        }
         public void CheckCollisions()
         {
-            // get the position of each ghost to check if it collided with 
-            // the current pacman position.
-            if (controller.Ghostpack == )
+            // check collision with all the other objects on the maze
+             for(int i = 0; i < this.ghosts.Count; i++)
+            {
+                if (ghosts[i].Position == this.position)
+                {
+                    this.controller.Score.Lives -= 1;
+                }
+               
+            }
         }       
     }
 }

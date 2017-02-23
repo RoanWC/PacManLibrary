@@ -46,16 +46,22 @@ namespace PacManLibrary
         /// <summary>
         /// changes the state of the ghosts to scared
         /// </summary>
-        public void scaredGhost()
+        public void scareGhost()
         {
-
+            foreach (Ghost g in ghosts)
+            {
+                g.changeState(Scared);
+            }
         }
         /// <summary>
         /// tells all the ghosts to move
         /// </summary>
         public void move()
         {
-
+            foreach (Ghost g in ghosts)
+            {
+                g.move();
+            }
         }
         /// <summary>
         /// adds a ghost to the list

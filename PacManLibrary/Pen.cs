@@ -48,11 +48,13 @@ namespace PacManLibrary
         /// <param name="e"></param>
         private void Release(object sender, ElapsedEventArgs e)
         {
+
+           
             Timer t = (Timer)sender;
             t.Enabled = false;
             Ghost g = ghosts.Dequeue();
             timers.Remove(t);
-            g.ChangeState(GhostState.Released);
+            g.changeState();
         }
 
         /// <summary>

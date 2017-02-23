@@ -14,7 +14,6 @@ namespace PacManLibrary
          int Points
         {
             get;
-            set;
         }
         void Collide();
     }
