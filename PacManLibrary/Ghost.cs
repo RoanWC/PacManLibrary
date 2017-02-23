@@ -10,7 +10,7 @@ namespace PacManLibrary
 {
     public class Ghost : IMovable
     {
-        public Delegate ghostState;
+
         private Direction direction;
         private Pacman pacman;
         private Vector2 target;
@@ -36,6 +36,11 @@ namespace PacManLibrary
             get;
             set;
         }
+        public IGhostState CurrentState
+        {
+            get { return currentState;}
+            set { currentState = value;}
+        }
         /// <summary>
         /// Constructor for the ghost to instanciate its position, state, target and colour
         /// </summary>
@@ -44,25 +49,25 @@ namespace PacManLibrary
         /// <param name="y">Y coordinate for the ghost</param>
         /// <param name="target">target that the ghost will move towards</param>
         /// <param name="state">state that the ghost is in</param>
-        /// <param name="color">colour that the ghost will be</param>
+        /// <param name="color">colour that the ghost will be painted</param>
         public Ghost(GameState g, int x, int y, Vector2 target, IGhostState state, Color color)
         {
             this.pacman = g.Pacman;
             Position = new Vector2(x, y);
             this.target = target;
-            currentState = state;
+            CurrentState = state;
             this.color = color;
-
         }
+
         public void changeState(IGhostState state)
         {
-
+            CurrentState = state;
         }
 
 
         public void move()
         {
-            throw new NotImplementedException();
+            CurrentState.move();
         }
     }
 }

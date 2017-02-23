@@ -18,7 +18,7 @@ namespace PacManLibrary
     public interface IMovable
     {
 
-        Direction direction
+        Direction Direction
         {
             get;
             set;

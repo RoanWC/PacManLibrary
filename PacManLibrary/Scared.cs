@@ -31,17 +31,17 @@ namespace PacManLibrary
             //change direction and make a 180 degree turn.
             switch (ghost.Direction)
             {
-                case Direction.up:
-                    ghost.Direction = Direction.down;
+                case Direction.Up:
+                    ghost.Direction = Direction.Down;
                     break;
-                case Direction.down:
-                    ghost.Direction = Direction.up;
+                case Direction.Down:
+                    ghost.Direction = Direction.Up;
                     break;
-                case Direction.left:
-                    ghost.Direction = Direction.right;
+                case Direction.Left:
+                    ghost.Direction = Direction.Right;
                     break;
-                case Direction.right:
-                    ghost.Direction = Direction.left;
+                case Direction.Right:
+                    ghost.Direction = Direction.Left;
                     break;
             }
 
@@ -59,7 +59,7 @@ namespace PacManLibrary
         public void move()
         {
             Tile current = maze[(int)ghost.Position.X, (int)ghost.Position.Y];
-            List<Tile> places = maze.GetAvailableNeighbours(ghost.Position, ghost.direction);
+            List<Tile> places = maze.GetAvailableNeighbours(ghost.Position, ghost.Direction);
             int numPlaces = places.Count;
 
             if (numPlaces == 0)
@@ -71,13 +71,13 @@ namespace PacManLibrary
             //determine direction
 
             if (places[choice].Position.X == ghost.Position.X + 1)
-                ghost.Direction = Direction.right;
+                ghost.Direction = Direction.Right;
             else if (places[choice].Position.X == ghost.Position.X - 1)
-                ghost.Direction = Direction.left;
+                ghost.Direction = Direction.Left;
             else if (places[choice].Position.Y == ghost.Position.Y - 1)
-                ghost.Direction = Direction.up;
+                ghost.Direction = Direction.Up;
             else
-                ghost.Direction = Direction.down;
+                ghost.Direction = Direction.Down;
 
             ghost.Position = places[choice].Position;
         }
