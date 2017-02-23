@@ -8,7 +8,30 @@ using Microsoft.Xna.Framework;
 
 namespace PacManLibrary
 {
-    public class Wall
+    public class Wall : Tile
     {
+        public Wall(int x, int y) : base(x, y)
+        {
+        }
+
+        public override bool CanEnter()
+        {
+            throw new NotImplementedException();
+        }
+
+        public override void Collide()
+        {
+            throw new NotImplementedException();
+        }
+
+        public override bool IsEmpty()
+        {
+            throw new NotImplementedException();
+        }
+
+        public override ICollidable Member()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

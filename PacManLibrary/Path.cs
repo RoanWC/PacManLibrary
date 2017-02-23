@@ -8,7 +8,30 @@ using Microsoft.Xna.Framework;
 
 namespace PacManLibrary
 {
-    public class Path
+    public class Path : Tile
     {
+        public Path(int x, int y, ICollidable member) : base(x,y)
+        {
+        }
+
+        public override bool CanEnter()
+        {
+            throw new NotImplementedException();
+        }
+
+        public override void Collide()
+        {
+            throw new NotImplementedException();
+        }
+
+        public override bool IsEmpty()
+        {
+            throw new NotImplementedException();
+        }
+
+        public override ICollidable Member()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

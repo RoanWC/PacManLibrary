@@ -8,14 +8,14 @@ using Microsoft.Xna.Framework;
 
 namespace PacManLibrary
 {
-    public class Maze : Tile
+    public class Maze 
     {
         private Tile[,] maze;
 
         public Maze()
         {
             //Still working on this one
-            maze = new Tile[Position.X, Position.Y];
+            maze = new Tile[(int)tilePosition.X, (int)tilePosition.Y];
         }
         public Tile this[int index1, int indexer2]
         {
@@ -28,26 +28,6 @@ namespace PacManLibrary
             {
                 maze[index1, indexer2] = value;
             }
-        }
-
-        public override bool CanEnter()
-        {
-            throw new NotImplementedException();
-        }
-
-        public override void Collide()
-        {
-            throw new NotImplementedException();
-        }
-
-        public override bool IsEmpty()
-        {
-            throw new NotImplementedException();
-        }
-
-        public override ICollidable Member()
-        {
-            throw new NotImplementedException();
         }
     }
 }

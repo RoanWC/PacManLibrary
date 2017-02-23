@@ -18,7 +18,7 @@ namespace PacManLibrary
             vector.Y = y;
         }
 
-        public Vector2 Position
+        public Vector2 tilePosition
         {
             get
             {
@@ -36,7 +36,7 @@ namespace PacManLibrary
         public abstract bool IsEmpty();
         public float GetDistance(Vector2 goal)
         {
-            //Get the distance for what exactly? Between what?
+            return Vector2.Distance(vector, goal);
         }
     }
 }

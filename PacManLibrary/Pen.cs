@@ -47,14 +47,12 @@ namespace PacManLibrary
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void Release(object sender, ElapsedEventArgs e)
-        {
-
-           
+        {          
             Timer t = (Timer)sender;
             t.Enabled = false;
             Ghost g = ghosts.Dequeue();
             timers.Remove(t);
-            g.changeState();
+            g.ChangeState(GhostState.Released);
         }
 
         /// <summary>
@@ -68,7 +66,7 @@ namespace PacManLibrary
         public void AddToPen(Ghost ghost)
         {
             ghosts.Enqueue(ghost);
-            ghost.Position = pen[ghosts.Count - 1].Position;
+            ghost.Position = pen[ghosts.Count - 1].tilePosition;
             Timer t = new Timer((ghosts.Count * 1000));
             t.Enabled = true;
             t.Elapsed += Release;
