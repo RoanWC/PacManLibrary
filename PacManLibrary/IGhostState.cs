@@ -8,10 +8,10 @@ using Microsoft.Xna.Framework;
 
 namespace PacManLibrary
 {
-    public enum ghostState
+    public enum GhostState
     {
-        ScaredState,
-        Chasestate
+        scared,
+        Chase
     };
     public interface IGhostState
     {
