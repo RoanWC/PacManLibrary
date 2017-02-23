@@ -11,7 +11,7 @@ namespace PacManLibrary
     public class Ghost : IMovable
     {
         public Delegate ghostState;
-
+        private Direction direction;
         private Pacman pacman;
         private Vector2 target;
         private Pen pen;
@@ -31,12 +31,20 @@ namespace PacManLibrary
                 this.Position = value;
             }
         }
-        public Direction direction
+        public Direction Direction
         {
             get;
             set;
         }
-
+        /// <summary>
+        /// Constructor for the ghost to instanciate its position, state, target and colour
+        /// </summary>
+        /// <param name="g">gamestate object</param>
+        /// <param name="x">X coordinate for the ghost</param>
+        /// <param name="y">Y coordinate for the ghost</param>
+        /// <param name="target">target that the ghost will move towards</param>
+        /// <param name="state">state that the ghost is in</param>
+        /// <param name="color">colour that the ghost will be</param>
         public Ghost(GameState g, int x, int y, Vector2 target, IGhostState state, Color color)
         {
             this.pacman = g.Pacman;

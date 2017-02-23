@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
+using PacManLibrary;
 
 namespace PacManLibrary
 {
@@ -14,7 +15,11 @@ namespace PacManLibrary
     public class GhostPack
     {
         //List of ghosts
-        private List<Ghost> Ghosts;
+        private List<Ghost> ghosts;
+        public List<Ghost> Ghosts
+        {
+            get;
+        }
         /// <summary>
         /// Constructor to initialize the ghostList
         /// </summary>
@@ -46,7 +51,7 @@ namespace PacManLibrary
 
         }
         /// <summary>
-        /// tells the ghosts to move
+        /// tells all the ghosts to move
         /// </summary>
         public void move()
         {

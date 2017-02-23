@@ -9,10 +9,10 @@ namespace PacManLibrary
 {
     public enum Direction
     {
-        up,
-        down,
-        left,
-        right
+        Up,
+        Down,
+        Left,
+        Right
     };
 
     public interface IMovable

@@ -14,6 +14,13 @@ namespace PacManLibrary
         private Pacman pacman;
         private Vector2 target;
 
+        /// <summary>
+        /// three parameter constructor to instansiate the chase behavior for the ghost
+        /// </summary>
+        /// <param name="ghost">ghost that is going to be chasing</param>
+        /// <param name="maze">maze that the ghost is in</param>
+        /// <param name="target">point that the ghost is moving to</param>
+        /// <param name="pacman">pacman </param>
         public Chase(Ghost ghost, Maze maze, Vector2 target, Pacman pacman)
         {
             this.ghost = ghost;
@@ -22,6 +29,9 @@ namespace PacManLibrary
             this.target = target;
         }
 
+        /// <summary>
+        /// Defines how the ghost will move when it is in chase mode
+        /// </summary>
         public void move()
         {
             Tile current = maze[(int)ghost.Position.X, (int)ghost.Position.Y];
@@ -49,8 +59,6 @@ namespace PacManLibrary
             else
                 ghost.Direction = Direction.Down;
             ghost.Position = places[choice].Position;
-
-
-        }
+         }
     }
 }
