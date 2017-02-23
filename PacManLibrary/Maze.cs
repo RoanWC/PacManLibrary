@@ -15,7 +15,19 @@ namespace PacManLibrary
         public Maze()
         {
             //Still working on this one
-            maze = new Tile[base.tile, base.tile];
+            maze = new Tile[Position.X, Position.Y];
+        }
+        public Tile this[int index1, int indexer2]
+        {
+            get
+            {
+                return maze[index1, indexer2];
+            }
+
+            set
+            {
+                maze[index1, indexer2] = value;
+            }
         }
 
         public override bool CanEnter()
