@@ -19,7 +19,7 @@ namespace PacManLibrary
         }
         public void Collide()
         {
-
+            this.points += 10;
         }
     }
 }

@@ -16,16 +16,16 @@ namespace PacManLibrary
 
         public Energizer(GhostPack ghosts)
         {
-            this.ghosts = ghosts;
+            this.ghosts = ghosts; 
         }
         public int Points
         {
             get { return points; }
-            set { points = value; }
         }
         public void Collide()
         {
-
+            this.points += 100;
+            this.ghosts.scaredGhost();
         }
     }
 }

@@ -24,7 +24,7 @@ namespace PacManLibrary
         public int Lives
         {
             get { return lives; }
-            private set { lives = value; }
+            set { lives = value; }
         }
         public int Score
         {
