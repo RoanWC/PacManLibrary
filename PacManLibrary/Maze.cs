@@ -17,6 +17,10 @@ namespace PacManLibrary
             //Still working on this one
             maze = new Tile[(int)tilePosition.X, (int)tilePosition.Y];
         }
+        public void SetTiles(Tile[,] tile)
+        {
+
+        }
         public Tile this[int index1, int indexer2]
         {
             get

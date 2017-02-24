@@ -10,7 +10,7 @@ namespace PacManLibrary
 {
     public class Path : Tile
     {
-        public Path(int x, int y, ICollidable member) : base(x,y)
+        public Path(int x, int y, ICollidable member = null) : base(x,y)
         {
         }
 
