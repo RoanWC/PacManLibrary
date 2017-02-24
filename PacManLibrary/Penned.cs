@@ -31,7 +31,7 @@ namespace PacManLibrary
             Random rand = new Random();
             int choice = rand.Next(numPlaces);
 
-            if (places[choice].tilePosition.X == ghost.Position.X + 1)
+            if (places[choice].Position.X == ghost.Position.X + 1)
                 ghost.Direction = Direction.Right;
             else if (places[choice].Position.X == ghost.Position.X - 1)
                 ghost.Direction = Direction.Left;
@@ -40,6 +40,7 @@ namespace PacManLibrary
             else
                 ghost.Direction = Direction.Down;
 
+            ghost.Position = places[choice].Position;
         }
     }
 }
