@@ -15,45 +15,32 @@ namespace PacManLibrary
     {
 
         //field declarations
-        private Direction direction;
         private Pacman pacman;
         private Vector2 target;
         private Pen pen;
         private Maze maze;
-        private Color color;
-        private IGhostState currentState;
         private Timer scared;
         private Dictionary<GhostState, IGhostState> gStates = new Dictionary<GhostState, IGhostState>(3);
         private Path resetLocation;
 
         //property declarations
-        public Vector2 Position
-        {
-            get;
-            set;
-        }
-        public Direction Direction
-        {
-            get
-            {
-                return direction;
-            }
-            set
-            {
-                direction = value;
-            }
-        }
-        public IGhostState CurrentState
-        {
-            get { return currentState; }
-            set { currentState = value; }
-        }
-        public Color Color
-        {
-            get { return color; }
-            set { color = value; }
-        }
+        public Vector2 Position { get; set; }
+        public Direction Direction { get; set; }
+        public IGhostState CurrentState { get; set; }
+        public Color Color { get; set; }
 
+        //event declarations
+        public event CollisionHandler pacManDies;
+        public event CollisionHandler collision;
+
+        protected virtual void OnPacManDies()
+        {
+            pacManDies?.Invoke();
+        }
+        protected virtual void OnCollision()
+        {
+            collision?.Invoke();
+        }
 
         /// <summary>
         /// Constructor for the ghost to instanciate its position, state, target and colour
@@ -70,7 +57,7 @@ namespace PacManLibrary
             Position = new Vector2(x, y);
             this.target = target;
             ChangeState(state);
-            this.color = color;
+            Color = color;
             CreateStates();
         }
         /// <summary>
@@ -79,7 +66,7 @@ namespace PacManLibrary
         /// <param name="state">ghostState enum to determine what state to change to</param>
         public void ChangeState(GhostState state)
         {
-            this.Position = resetLocation.Position;
+            Position = resetLocation.Position;
             if (state == GhostState.released)
             {                
                 CurrentState = gStates[GhostState.chase];
@@ -114,5 +101,7 @@ namespace PacManLibrary
             IGhostState pennedState = new Penned(this, maze);
             gStates.Add(GhostState.penned, pennedState);
         }
+       
+
     }
 }
