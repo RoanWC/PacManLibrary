@@ -68,21 +68,33 @@ namespace PacManLibrary
         /// <param name="target">target that the ghost will move towards</param>
         /// <param name="state">state that the ghost is in</param>
         /// <param name="color">colour that the ghost will be painted</param>
-        public Ghost(GameState g, int x, int y, Vector2 target, IGhostState state, Color color)
+        public Ghost(GameState g, int x, int y, Vector2 target, GhostState state, Color color)
         {
             this.pacman = g.Pacman;
             Position = new Vector2(x, y);
             this.target = target;
-            CurrentState = state;
+            ChangeState(state);
             this.color = color;
         }
         /// <summary>
         /// Changes the ghosts current state
         /// </summary>
-        /// <param name="state">iGhostState object to change the current state to</param>
-        public void changeState(IGhostState state)
+        /// <param name="state">ghostState enum to determine what state to change to</param>
+        public void ChangeState(GhostState state)
         {
-            CurrentState = state;
+            switch (state)
+            {
+                case GhostState.scared:
+                    break;
+                case GhostState.chase:
+                    break;
+                case GhostState.released:
+                    break;
+                case GhostState.penned:
+                    break;
+                default:
+                    break;
+            }
         }
         /// <summary>
         /// calls the move method of the state that it currently is
@@ -96,6 +108,10 @@ namespace PacManLibrary
         public void reset()
         {
             pen.AddToPen(this);
+        }
+        public void CreateStates()
+        {
+
         }
     }
 }

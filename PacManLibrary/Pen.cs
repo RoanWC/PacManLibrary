@@ -1,4 +1,4 @@
-﻿using PacManLibrary;
+﻿-using PacManLibrary;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -52,7 +52,7 @@ namespace PacManLibrary
             t.Enabled = false;
             Ghost g = ghosts.Dequeue();
             timers.Remove(t);
-            g.ChangeState(GhostState.Released);
+            g.ChangeState(GhostState.released);
         }
 
         /// <summary>

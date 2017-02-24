@@ -18,7 +18,7 @@ namespace PacManLibrary
             vector.Y = y;
         }
 
-        public Vector2 tilePosition
+        public Vector2 Position
         {
             get
             {
