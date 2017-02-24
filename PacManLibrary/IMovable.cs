@@ -7,13 +7,7 @@ using Microsoft.Xna.Framework;
 
 namespace PacManLibrary
 {
-    public enum Direction
-    {
-        Up,
-        Down,
-        Left,
-        Right
-    };
+
 
     public interface IMovable
     {

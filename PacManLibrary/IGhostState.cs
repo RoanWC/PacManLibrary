@@ -8,13 +8,7 @@ using Microsoft.Xna.Framework;
 
 namespace PacManLibrary
 {
-    public enum GhostState
-    {
-        scared,
-        chase,
-        released,
-        penned
-    };
+
     public interface IGhostState
     {
         void move();
