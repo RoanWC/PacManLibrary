@@ -7,10 +7,11 @@ using Microsoft.Xna.Framework;
 
 
 namespace PacManLibrary
-{
+{ 
     public interface ICollidable
     {
-        // delegates 
+        // CollisionHandler is the delegate and Collision is the event 
+         event CollisionHandler Collision;
          int Points
         {
             get;

@@ -12,6 +12,7 @@ namespace PacManLibrary
     {
         private int points;
 
+        public event CollisionHandler Collision;
         public int Points
         {
             get { return points; }
@@ -20,6 +21,11 @@ namespace PacManLibrary
         public void Collide()
         {
             this.points += 10;
+        }
+
+        protected virtual void OnCollision(int points)
+        {
+            Collision?.Invoke(points);
         }
     }
 }

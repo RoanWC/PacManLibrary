@@ -14,6 +14,7 @@ namespace PacManLibrary
         private int lives;
         private int score;
 
+        // event
 
         public ScoreAndLives(GameState gs)
         {
@@ -34,5 +35,11 @@ namespace PacManLibrary
         }
 
         // event handlers here
+        
+        protected virtual void incrementScore(int points)
+        {
+            this.score += points;
+        } 
+
     }
 }

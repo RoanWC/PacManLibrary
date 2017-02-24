@@ -44,6 +44,8 @@ namespace PacManLibrary
                             Pellet pel = new Pellet();
                             Path pelletPath = new Path(i, j, pel);
                             gs.Maze[i, j] = pelletPath;
+                            // pel.Collide += IncrementScore 
+                            // but IncrementScore is protected
                             break;                  
                         case "m":
                             Path emptyPath = new Path(i, j);
