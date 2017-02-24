@@ -20,5 +20,5 @@ namespace PacManLibrary
         Left,
         Right
     };
-    public delegate void CollisionHandler();
+    public delegate void CollisionHandler(int point = 0);
 }
