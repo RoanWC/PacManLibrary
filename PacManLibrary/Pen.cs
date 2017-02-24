@@ -1,4 +1,4 @@
-﻿using PacManLibrary;
+﻿-using PacManLibrary;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -52,7 +52,7 @@ namespace PacManLibrary
             t.Enabled = false;
             Ghost g = ghosts.Dequeue();
             timers.Remove(t);
-            g.ChangeState(GhostState.Released);
+            g.ChangeState(GhostState.released);
         }
 
         /// <summary>
@@ -66,7 +66,7 @@ namespace PacManLibrary
         public void AddToPen(Ghost ghost)
         {
             ghosts.Enqueue(ghost);
-            ghost.Position = pen[ghosts.Count - 1].tilePosition;
+            ghost.Position = pen[ghosts.Count - 1].Position;
             Timer t = new Timer((ghosts.Count * 1000));
             t.Enabled = true;
             t.Elapsed += Release;

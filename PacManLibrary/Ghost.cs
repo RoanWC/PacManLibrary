@@ -23,18 +23,14 @@ namespace PacManLibrary
         private Color color;
         private IGhostState currentState;
         private Timer scared;
+        private Dictionary<GhostState, IGhostState> gStates = new Dictionary<GhostState, IGhostState>(3);
+        private Path resetLocation;
 
         //property declarations
         public Vector2 Position
         {
-            get
-            {
-                return Position;
-            }
-            set
-            {
-                this.Position = value;
-            }
+            get;
+            set;
         }
         public Direction Direction
         {
@@ -68,22 +64,32 @@ namespace PacManLibrary
         /// <param name="target">target that the ghost will move towards</param>
         /// <param name="state">state that the ghost is in</param>
         /// <param name="color">colour that the ghost will be painted</param>
-        public Ghost(GameState g, int x, int y, Vector2 target, IGhostState state, Color color)
+        public Ghost(GameState g, int x, int y, Vector2 target, GhostState state, Color color)
         {
             this.pacman = g.Pacman;
             Position = new Vector2(x, y);
             this.target = target;
-            CurrentState = state;
+            ChangeState(state);
             this.color = color;
+            CreateStates();
         }
         /// <summary>
         /// Changes the ghosts current state
         /// </summary>
-        /// <param name="state">iGhostState object to change the current state to</param>
-        public void changeState(IGhostState state)
+        /// <param name="state">ghostState enum to determine what state to change to</param>
+        public void ChangeState(GhostState state)
         {
-            CurrentState = state;
+            this.Position = resetLocation.Position;
+            if (state == GhostState.released)
+            {                
+                CurrentState = gStates[GhostState.chase];
+            }
+            else
+            {
+                CurrentState = gStates[state];
+            }
         }
+        
         /// <summary>
         /// calls the move method of the state that it currently is
         /// </summary>
@@ -96,6 +102,17 @@ namespace PacManLibrary
         public void reset()
         {
             pen.AddToPen(this);
+        }
+        public void CreateStates()
+        {
+            IGhostState scaredState = new Scared(this, maze);
+            gStates.Add(GhostState.scared, scaredState);
+
+            IGhostState chaseState = new Chase(this, maze, target, pacman);
+            gStates.Add(GhostState.chase, scaredState);
+
+            IGhostState pennedState = new Penned(this, maze);
+            gStates.Add(GhostState.penned, pennedState);
         }
     }
 }

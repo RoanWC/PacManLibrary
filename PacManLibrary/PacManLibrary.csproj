@@ -53,6 +53,7 @@
     <Compile Include="Pellet.cs" />
     <Compile Include="Pen.cs" />
     <Compile Include="ICollidable.cs" />
+    <Compile Include="Penned.cs" />
     <Compile Include="Scared.cs" />
     <Compile Include="ScoreAndLives.cs" />
     <Compile Include="Tile.cs" />

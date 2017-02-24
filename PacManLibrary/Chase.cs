@@ -58,6 +58,7 @@ namespace PacManLibrary
                 ghost.Direction = Direction.Up;
             else
                 ghost.Direction = Direction.Down;
+
             ghost.Position = places[choice].Position;
          }
     }

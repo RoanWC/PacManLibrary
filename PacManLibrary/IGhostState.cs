@@ -11,7 +11,9 @@ namespace PacManLibrary
     public enum GhostState
     {
         scared,
-        Chase
+        chase,
+        released,
+        penned
     };
     public interface IGhostState
     {
