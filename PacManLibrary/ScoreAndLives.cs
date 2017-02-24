@@ -14,12 +14,13 @@ namespace PacManLibrary
         private int lives;
         private int score;
 
+
         public ScoreAndLives(GameState gs)
         {
-
+            lives = gs.ScoreAndLives.Lives;
+            score = gs.ScoreAndLives.Score;
         }
 
-        //events here
 
         public int Lives
         {
@@ -29,7 +30,7 @@ namespace PacManLibrary
         public int Score
         {
             get { return score; }
-            private set { score = value; }
+            set { score = value; }
         }
 
         // event handlers here

@@ -21,6 +21,10 @@ namespace PacManLibrary
         {         
             string[] read = File.ReadAllLines("levels.txt");
             GameState gs = new GameState();
+            gs.ScoreAndLives = new ScoreAndLives(gs);
+            //not sure
+            gs.ScoreAndLives.Lives = 3;
+            gs.ScoreAndLives.Score = 0;
             gs.Maze = new Maze();
             gs.Ghostpack = new GhostPack();
             string[,] grid = new string[23, 23];
@@ -45,22 +49,35 @@ namespace PacManLibrary
                             Path emptyPath = new Path(i, j);
                             gs.Maze[i, j] = emptyPath;
                             break;
+                        case "x":
+                            Pen pen = new Pen();
+                            gs.Maze[i, j] = pen;
+                            break;
                         case "e":
                             Energizer energizer = new Energizer(gs.Ghostpack);
                             Path energPath = new Path(i, j, energizer);
                             gs.Maze[i, j] = energPath;
                             break;
                         case "1":
-                            Vector2 target = new Vector2(gs.Pacman.PacManPosition.X + 2, gs.Pacman.PacManPosition.Y);
-                            gs.Ghostpack = new Ghost(gs, i, j, )
-                            break;
+                            // Ghost1 is not inside of pen tho
+                            Vector2 targetGhost1 = new Vector2(gs.Pacman.PacManPosition.X + 2, gs.Pacman.PacManPosition.Y);
+                            gs.Ghostpack.Add(new Ghost(gs, i, j, targetGhost1, GhostState.penned, Color.HotPink));
+                            break;                    
                         case "2":
+                            Vector2 targetGhost2 = new Vector2(gs.Pacman.PacManPosition.X + 5, gs.Pacman.PacManPosition.Y);
+                            gs.Ghostpack.Add(new Ghost(gs, i, j, targetGhost2, GhostState.penned, Color.Yellow));
                             break;
                         case "3":
+                            Vector2 targetGhost3 = new Vector2(gs.Pacman.PacManPosition.X + 1, gs.Pacman.PacManPosition.Y);
+                            gs.Ghostpack.Add(new Ghost(gs, i, j, targetGhost3, GhostState.penned, Color.Cyan));
                             break;
                         case "4":
-    
-                            break;           
+                            Vector2 targetGhost4 = new Vector2(gs.Pacman.PacManPosition.X + 2, gs.Pacman.PacManPosition.Y);
+                            gs.Ghostpack.Add(new Ghost(gs, i, j, targetGhost4, GhostState.penned, Color.LightGreen));
+                            break;
+                        case "P":
+                            gs.Pacman = new Pacman(gs, i, j);                         
+                            break;              
                     }
                    
                 }    
@@ -70,28 +87,28 @@ namespace PacManLibrary
         }
         public Pacman Pacman
         {
-            get { return pacman; }
-            private set { pacman = value; }
+            get { return Pacman; }
+            private set { Pacman = value; }
         }
         public GhostPack Ghostpack
         {
-            get { return ghostpack; }
-            private set { ghostpack = value; }
+            get { return Ghostpack; }
+            private set { Ghostpack = value; }
         }
         public Maze Maze
         {
-            get { return maze; }
-            private set { maze = value; }
+            get { return Maze; }
+            private set { Maze = value; }
         }
         public Pen Pen
         {
-            get { return pen; }
-            private set { pen = value; }
+            get { return Pen; }
+            private set { Pen = value; }
         }
-        public ScoreAndLives Score
+        public ScoreAndLives ScoreAndLives
         {
-            get { return score; }
-            private set { score = value; }
+            get { return ScoreAndLives; }
+            private set { ScoreAndLives = value; }
         }
     }
 }
