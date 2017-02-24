@@ -31,15 +31,15 @@ namespace PacManLibrary
 
         //event declarations
         public event CollisionHandler pacManDies;
-        public event CollisionHandler collision;
+        public event CollisionHandler Collision;
 
         protected virtual void OnPacManDies()
         {
             pacManDies?.Invoke();
         }
-        protected virtual void OnCollision()
+        protected virtual void OnCollision(int points)
         {
-            collision?.Invoke();
+            Collision?.Invoke(points);
         }
 
         /// <summary>
