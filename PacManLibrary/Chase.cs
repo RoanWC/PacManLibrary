@@ -32,7 +32,7 @@ namespace PacManLibrary
         /// <summary>
         /// Defines how the ghost will move when it is in chase mode
         /// </summary>
-        public void move()
+        public void Move()
         {
             Tile current = maze[(int)ghost.Position.X, (int)ghost.Position.Y];
             List<Tile> places = maze.GetAvailableNeighbours(ghost.Position, ghost.Direction);

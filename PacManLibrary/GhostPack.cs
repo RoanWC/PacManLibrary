@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,7 +13,7 @@ namespace PacManLibrary
     /// The GhostPack class centralizes where ghosts are asked to move, colliion 
     /// checks and reseting them back to the pen. It also changes them scared state.
     /// </summary>
-    public class GhostPack
+    public class GhostPack : IEnumerable<Ghost>
     {
         //List of ghosts
         private List<Ghost> ghosts;
@@ -46,21 +47,21 @@ namespace PacManLibrary
         /// <summary>
         /// changes the state of the ghosts to scared
         /// </summary>
-        public void scareGhost()
+        public void ScareGhost()
         {
             foreach (Ghost g in ghosts)
             {
-                g.changeState(Scared);
+                g.ChangeState(GhostState.scared);
             }
         }
         /// <summary>
         /// tells all the ghosts to move
         /// </summary>
-        public void move()
+        public void Move()
         {
             foreach (Ghost g in ghosts)
             {
-                g.move();
+                g.Move();
             }
         }
         /// <summary>
@@ -71,6 +72,16 @@ namespace PacManLibrary
         {
             Ghosts.Add(g);
 
+        }
+
+        public IEnumerator<Ghost> GetEnumerator()
+        {
+            return ghosts.GetEnumerator();
+        }
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return ghosts.GetEnumerator();
         }
     }
 }

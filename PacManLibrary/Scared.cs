@@ -56,7 +56,7 @@ namespace PacManLibrary
         /// position (i.e., to avoid 180 degree turns) (used by the Maze class's GetAvailableNeighbours
         /// method)
         /// </summary>
-        public void move()
+        public void Move()
         {
             Tile current = maze[(int)ghost.Position.X, (int)ghost.Position.Y];
             List<Tile> places = maze.GetAvailableNeighbours(ghost.Position, ghost.Direction);

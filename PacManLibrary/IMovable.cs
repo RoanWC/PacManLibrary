@@ -27,7 +27,7 @@ namespace PacManLibrary
 
 
 
-        void move();
+        void Move();
 
 
     }

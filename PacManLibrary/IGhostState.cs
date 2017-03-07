@@ -11,7 +11,7 @@ namespace PacManLibrary
 
     public interface IGhostState
     {
-        void move();
+        void Move();
 
     }
 }

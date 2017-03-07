@@ -18,7 +18,7 @@ namespace PacManLibrary
             this.maze = maze;
 
         }
-        public void move()
+        public void Move()
         {
             Tile current = maze[(int)ghost.Position.X, (int)ghost.Position.Y];
             List<Tile> places = maze.GetAvailableNeibours(ghost.Position, ghost.Direction);

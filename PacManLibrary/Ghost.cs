@@ -80,13 +80,13 @@ namespace PacManLibrary
         /// <summary>
         /// calls the move method of the state that it currently is
         /// </summary>
-        public void move()
+        public void Move()
         {
-            CurrentState.move();
+            CurrentState.Move();
         }
 
 
-        public void reset()
+        public void Reset()
         {
             pen.AddToPen(this);
         }
