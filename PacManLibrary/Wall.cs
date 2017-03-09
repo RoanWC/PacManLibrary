@@ -16,7 +16,7 @@ namespace PacManLibrary
 
         public override bool CanEnter()
         {
-            throw new NotImplementedException();
+            return false;
         }
 
         public override void Collide()

@@ -21,6 +21,9 @@ namespace PacManLibrary
         {
 
         }
+
+        
+
         public Tile this[int index1, int indexer2]
         {
             get
@@ -31,6 +34,30 @@ namespace PacManLibrary
             set
             {
                 maze[index1, indexer2] = value;
+            }
+        }
+
+        //The length of a row
+        public int Size
+        {
+            get { return maze.GetLength(0); }
+        }
+
+        public List<Tile> GetAvailableNeighbours(Vector2 position, Direction direction)
+        {
+
+            return List;
+        }
+
+        //There has to be a more efficient way to get this done but at the moment this is th eonly
+        public void CheckMembersLeft()
+        {
+            for( int i = 0; i < maze.GetLength(0); i++)
+            {
+                for( int j = 0; j< maze.GetLength(1); j++)
+                {
+
+                }
             }
         }
     }

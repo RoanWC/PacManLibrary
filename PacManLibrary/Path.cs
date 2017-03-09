@@ -10,28 +10,38 @@ namespace PacManLibrary
 {
     public class Path : Tile
     {
+        private int x;
+        private int y;
+        private ICollidable member;
         public Path(int x, int y, ICollidable member = null) : base(x,y)
         {
+            this.x = x;
+            this.y = y;
+            this.member = member;
         }
 
         public override bool CanEnter()
         {
-            throw new NotImplementedException();
+            return true;
         }
 
         public override void Collide()
         {
-            throw new NotImplementedException();
+            //I though it went like this but it doesnt
+            //member.Collide;
         }
 
         public override bool IsEmpty()
         {
-            throw new NotImplementedException();
+            if(member is Pellet || member is Energizer ||
+                member is Ghost)
+                return false;
+            return true;
         }
 
         public override ICollidable Member()
         {
-            throw new NotImplementedException();
+            return member;
         }
     }
 }
