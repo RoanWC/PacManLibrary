@@ -11,7 +11,7 @@ namespace PacManLibrary
     public interface ICollidable
     {
         // CollisionHandler is the delegate and Collision is the event 
-         event CollisionHandler Collision;
+        event CollisionHandler Collision;
          int Points
         {
             get;

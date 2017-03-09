@@ -8,6 +8,7 @@ using Microsoft.Xna.Framework;
 
 namespace PacManLibrary
 {
+    //public delegate void CollisionHander(int points);
     public class Pellet : ICollidable
     {
         private int points;
@@ -16,16 +17,18 @@ namespace PacManLibrary
         public int Points
         {
             get { return points; }
-            set { points = value; }
+           // set { points = value; }
         }
         public void Collide()
         {
             this.points += 10;
+            OnCollision(points);
         }
 
         protected virtual void OnCollision(int points)
         {
-            Collision?.Invoke(points);
+            if (Collision != null)
+                Collision(points);
         }
     }
 }

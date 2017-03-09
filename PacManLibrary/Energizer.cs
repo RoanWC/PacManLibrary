@@ -13,10 +13,11 @@ namespace PacManLibrary
         private int points;
         private GhostPack ghosts;
 
+        public event CollisionHandler Collision;
 
         public Energizer(GhostPack ghosts)
         {
-            this.ghosts = ghosts; 
+            this.ghosts = ghosts;  
         }
         public int Points
         {
@@ -25,7 +26,12 @@ namespace PacManLibrary
         public void Collide()
         {
             this.points += 100;
-            this.ghosts.scaredGhost();
+            onCollision(this.points);
+        }
+        protected virtual void onCollision(int points)
+        {
+            if (Collision != null)
+                Collision(points);
         }
     }
 }
