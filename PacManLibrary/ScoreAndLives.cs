@@ -15,7 +15,9 @@ namespace PacManLibrary
         private int score;
 
         // event
-        public event CollisionHander GameOver;
+        public event DeadPacManHandler GameOver;
+
+
 
 
         public ScoreAndLives(GameState gs)
@@ -39,9 +41,9 @@ namespace PacManLibrary
         // event handlers here
         protected virtual void deadPacman()
         {
-           
-        }
-        
+            if (GameOver != null)
+                GameOver();
+        }        
         protected virtual void incrementScore(ICollidable obj)
         {
             this.score += obj.Points;

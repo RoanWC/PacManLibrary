@@ -21,4 +21,5 @@ namespace PacManLibrary
         Right
     };
     public delegate void CollisionHandler(int point = 0);
+    public delegate void DeadPacManHandler();
 }
