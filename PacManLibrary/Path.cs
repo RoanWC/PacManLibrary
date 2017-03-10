@@ -63,9 +63,10 @@ namespace PacManLibrary
                 return false;
             return true;
         }
-        //THIS COMMENT STILL NEEDS WORK
+
         /// <summary>
-        /// This method will return an icollidable member
+        /// This method will return a member that can be 
+        /// collided with.
         /// </summary>
         /// <returns></returns>
         public override ICollidable Member()
