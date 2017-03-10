@@ -8,16 +8,30 @@ using Microsoft.Xna.Framework;
 
 namespace PacManLibrary
 {
+    /// <summary>
+    /// Wall is a derived class of tile, this class 
+    /// will represents all of the walls in the pacman
+    /// game, so there is not much implementationfor 
+    /// this class.
+    /// </summary>
     public class Wall : Tile
     {
-        private int x;
-        private int y;
+
+        /// <summary>
+        /// The wall constructor calls the base constructor
+        /// </summary>
+        /// <param name="x"></param>
+        /// <param name="y"></param>
         public Wall(int x, int y) : base(x, y)
         {
-            this.x = x;
-            this.y = y;
+            
         }
 
+        /// <summary>
+        /// A wall cannot be entered so it will always 
+        /// return false.
+        /// </summary>
+        /// <returns>bool</returns>
         public override bool CanEnter()
         {
             return false;
