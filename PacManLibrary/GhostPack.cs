@@ -33,16 +33,22 @@ namespace PacManLibrary
         /// </summary>
         /// <param name="target">contains the coordinates for pacman</param>
         /// <returns>returns true if the ghost has colided with pacman</returns>
-        public bool CheckCollideGhosts(Vector2 target)
+        public void CheckCollision()
         {
-            throw new NotImplementedException();
+            foreach (Ghost g in ghosts)
+            {
+                g.CheckCollision();
+            }
         }
         /// <summary>
         /// resets the ghosts back to the pen when pacman has been eaten.
         /// </summary>
         public void ResetGhost()
         {
-
+            foreach(Ghost g in ghosts)
+            {
+                g.Reset();
+            }
         }
         /// <summary>
         /// changes the state of the ghosts to scared
@@ -71,7 +77,6 @@ namespace PacManLibrary
         public void Add(Ghost g)
         {
             Ghosts.Add(g);
-
         }
 
         public IEnumerator<Ghost> GetEnumerator()

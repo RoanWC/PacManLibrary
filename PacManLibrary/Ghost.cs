@@ -11,7 +11,7 @@ namespace PacManLibrary
     /// <summary>
     /// The ghost class contains the code for the ghost class. thecurrentState IGhostState field is used to determine which classes move method to use. 
     /// </summary>
-    public class Ghost : IMovable
+    public class Ghost : IMovable,ICollidable
     {
 
         //field declarations
@@ -29,17 +29,25 @@ namespace PacManLibrary
         public IGhostState CurrentState { get; set; }
         public Color Color { get; set; }
 
+        public int Points
+        {
+            get
+            {
+                return 200;
+            }
+        }
+
         //event declarations
-        public event CollisionHandler pacManDies;
+        public event DeadPacManHandler pacManDies;
         public event CollisionHandler Collision;
 
-        protected virtual void OnPacManDies()
+        protected virtual void OnPacManDies(ICollidable i)
         {
             pacManDies?.Invoke();
         }
-        protected virtual void OnCollision(int points)
+        protected virtual void OnCollision(ICollidable i)
         {
-            Collision?.Invoke(points);
+            Collision?.Invoke(i);
         }
 
         /// <summary>
@@ -76,6 +84,20 @@ namespace PacManLibrary
                 CurrentState = gStates[state];
             }
         }
+        /// <summary>
+        /// 
+        /// </summary>
+        public void Collide()
+        {
+            CurrentState.Collide();
+        }
+        public void CheckCollision()
+        {
+            if(pacman.PacManPosition == Position)
+            {
+                Collide();
+            }
+        }
         
         /// <summary>
         /// calls the move method of the state that it currently is
@@ -96,7 +118,9 @@ namespace PacManLibrary
             gStates.Add(GhostState.scared, scaredState);
 
             IGhostState chaseState = new Chase(this, maze, target, pacman);
-            gStates.Add(GhostState.chase, scaredState);
+            gStates.Add(GhostState.chase, chaseState);
+            chaseState.Collision += OnPacManDies;
+            
 
             IGhostState pennedState = new Penned(this, maze);
             gStates.Add(GhostState.penned, pennedState);

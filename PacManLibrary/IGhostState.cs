@@ -12,6 +12,9 @@ namespace PacManLibrary
     public interface IGhostState
     {
         void Move();
+        void Collide();
 
+
+        event CollisionHandler Collision;
     }
 }

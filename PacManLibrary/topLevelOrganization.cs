@@ -23,4 +23,5 @@ namespace PacManLibrary
     public delegate void CollisionHandler(ICollidable obj);
     public delegate void DeadPacManHandler();
     public delegate void PacmanWonHandler();
+
 }

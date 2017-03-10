@@ -42,5 +42,9 @@ namespace PacManLibrary
 
             ghost.Position = places[choice].Position;
         }
+        public void Collide()
+        {
+
+        }
     }
 }

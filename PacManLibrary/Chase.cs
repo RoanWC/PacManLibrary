@@ -14,6 +14,9 @@ namespace PacManLibrary
         private Pacman pacman;
         private Vector2 target;
 
+       
+        public event CollisionHandler Collision;
+
         /// <summary>
         /// three parameter constructor to instansiate the chase behavior for the ghost
         /// </summary>
@@ -61,5 +64,10 @@ namespace PacManLibrary
 
             ghost.Position = places[choice].Position;
          }
+
+        public void Collide()
+        {
+            Collision?.Invoke(ghost);   
+        }
     }
 }
