@@ -23,12 +23,8 @@ namespace PacManLibrary
         /// This is an empty constructor becasue setTiles is 
         /// responsible for setting all of the tiles.
         /// </summary>
-        public Maze()
-        {
-            //base(x)
-            //Still working on this one, dont think it works
-            //maze = new Tile[maze.GetLength(0),maze.GetLength(1)];
-        }
+        public Maze() 
+        {}
         /// <summary>
         /// This method takes in a 2d array of tiles and sets 
         /// the maze variable to the tiles.
