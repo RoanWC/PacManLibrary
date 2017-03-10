@@ -8,32 +8,59 @@ using Microsoft.Xna.Framework;
 
 namespace PacManLibrary
 {
+    /// <summary>
+    /// The Maze class is going to contain the list of all the
+    /// tiles. The maze is made up of a 2d array of tiles and 
+    /// the event PacmanWon will be thrown when all tiles are 
+    /// empty.
+    /// </summary>
     public class Maze 
     {
         private Tile[,] maze;
         public event PacmanWonHandler PacmanWon;
 
+        /// <summary>
+        /// This is an empty constructor becasue setTiles is 
+        /// responsible for setting all of the tiles.
+        /// </summary>
         public Maze()
         {
             //base(x)
             //Still working on this one, dont think it works
             //maze = new Tile[maze.GetLength(0),maze.GetLength(1)];
         }
+        /// <summary>
+        /// This method takes in a 2d array of tiles and sets the maze 2d array 
+        /// </summary>
+        /// <param name="tile"></param>
         public void SetTiles(Tile[,] tile)
         {
-            this.maze = tile;
+            
+            for(int i = 0; i < Size; i++)
+            {
+                for(int j = 0; j < Size; j++)
+                {
+                    maze[i, j] = tile[i, j];
+                }
+            }
         }
 
-        public Tile this[int index1, int indexer2]
+        public Tile this[int index1, int index2]
         {
             get
             {
-                return maze[index1, indexer2];
+                if (index1 < 0 || index2 < 0 ||
+                   index1 >= Size || index2 >= Size)
+                    throw new ArgumentOutOfRangeException("The indexes must be in range");
+                return maze[index1, index2];
             }
 
             set
             {
-                maze[index1, indexer2] = value;
+                if (index1 < 0 || index2 < 0 ||
+                   index1 >= Size || index2 >= Size)
+                    throw new ArgumentOutOfRangeException("The indexes must be in range");
+                maze[index1, index2] = value;
             }
         }
 

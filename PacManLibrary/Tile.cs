@@ -17,13 +17,22 @@ namespace PacManLibrary
     {
         private Vector2 vector;
 
-
+        /// <summary>
+        /// This is the tile constructor that takes x and y
+        /// as parameters.
+        /// </summary>
+        /// <param name="x"></param>
+        /// <param name="y"></param>
         public Tile(int x, int y)
         {
             vector.X = x;
             vector.Y = y;
         }
 
+        /// <summary>
+        /// This property is to get and set the position of any 
+        /// given tile, returning a vector.
+        /// </summary>
         public Vector2 Position
         {
             get
@@ -35,11 +44,41 @@ namespace PacManLibrary
                 vector = value;
             }
         }
-
+        /// <summary>
+        /// This method will return the ICollidable member that 
+        /// is in a tile
+        /// </summary>
+        /// <returns>ICollidable</returns>
         public abstract ICollidable Member();
+
+        /// <summary>
+        /// The purpose of this is to return a boolean specifying 
+        /// whether the derived tile can be entered.
+        /// </summary>
+        /// <returns>bool</returns>
         public abstract bool CanEnter();
+
+        /// <summary>
+        /// This method will only be implemented in the path,
+        /// it will be used the invoke collide on the member in
+        /// the path.
+        /// </summary>
         public abstract void Collide();
+
+        /// <summary>
+        /// This method is intended to check if the tile 
+        /// contains a member in a derived class.
+        /// </summary>
+        /// <returns>bool</returns>
         public abstract bool IsEmpty();
+
+        /// <summary>
+        /// This method invokes the Distance method to calculate 
+        /// the distance between 2 vectors, returning the distance
+        /// as a float.
+        /// </summary>
+        /// <param name="goal"></param>
+        /// <returns>float</returns>
         public float GetDistance(Vector2 goal)
         {
             return Vector2.Distance(vector, goal);

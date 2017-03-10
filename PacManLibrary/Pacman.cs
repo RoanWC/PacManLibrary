@@ -12,34 +12,35 @@ namespace PacManLibrary
     {
         private GameState controller;
         private List<Ghost> ghosts;
-        private Vector2 position;
         private Maze maze;
+        private Vector2 position;
 
 
-        public Pacman(GameState controller, int x, int y)
+        public Pacman(GameState controller)
         {
             this.controller = controller;
             this.ghosts = controller.Ghostpack.Ghosts;
-            this.position = new Vector2(x,y);
+            this.maze = controller.Maze;
         }
         public void Move(Direction dir)
         {
-            
+           
         }
         public Vector2 PacManPosition
         {
             get { return this.position; }
+            set { position = value; }
         }
         public void CheckCollisions()
         {
-            // check collision with each ghost 
-             for(int i = 0; i < this.ghosts.Count; i++)
+            if (!(maze[(int)position.X, (int)position.Y].IsEmpty()))
+                maze[(int)position.X, (int)position.Y].Collide();
+
+            foreach(Ghost ghost in ghosts)
             {
-                if(ghosts[i].Position == PacManPosition){
-                    
-                }
-               
+                ghost.CheckCollision();
             }
+            
         }       
     }
 }

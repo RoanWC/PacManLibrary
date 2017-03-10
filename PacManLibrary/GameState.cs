@@ -23,7 +23,7 @@ namespace PacManLibrary
             gs.Ghostpack = ghostPack;
            
             ScoreAndLives score = new ScoreAndLives(gs);
-            Pacman pacMan;// = new Pacman(gs,);
+            Pacman pacMan = new Pacman(gs);
 
             gs.ScoreAndLives = score;
           //  gs.Pacman = pacMan;
@@ -63,12 +63,12 @@ namespace PacManLibrary
                             energizer.Collision += gs.ScoreAndLives.incrementScore;
                             tile[i, j] = energPath;
                             break;
-                        case "1":
-                            //(gs.Pacman.PacManPosition.X + 2, gs.Pacman.PacManPosition.Y)
+                        case "1":                       
                             Vector2 targetGhost1 = new Vector2(1,1);
                             Ghost blinky = new Ghost(gs, i, j, targetGhost1, GhostState.chase, Color.Red);
 
-                            blinky.Collision += gs.ScoreAndLives.deadPacman;                
+                            blinky.Collision += gs.ScoreAndLives.incrementScore;
+                            blinky.pacManDies += gs.ScoreAndLives.deadPacman;               
                             gs.Ghostpack.Add(blinky);
                             Path emptyPathGhostBlinky = new Path(i, j);
                             tile[i, j] = emptyPathGhostBlinky;
@@ -77,6 +77,8 @@ namespace PacManLibrary
                             Vector2 targetGhost2 = new Vector2(5, 5);
                             Ghost pinky = new Ghost(gs, i, j, targetGhost2, GhostState.penned, Color.HotPink);
                             //subscribe to collision and pacmandied event
+                            pinky.Collision += gs.ScoreAndLives.incrementScore;
+                            pinky.pacManDies += gs.ScoreAndLives.deadPacman;
                             gs.Ghostpack.Add(pinky);
                             Path emptyPathGhostPinky = new Path(i, j);
                             tile[i, j] = emptyPathGhostPinky;
@@ -87,6 +89,8 @@ namespace PacManLibrary
                             Vector2 targetGhost3 = new Vector2(2,2);
                             Ghost inky = new Ghost(gs, i, j, targetGhost3, GhostState.penned, Color.Cyan);
                             //subscribe to collision and pacmandied event
+                            inky.Collision += gs.ScoreAndLives.incrementScore;
+                            inky.pacManDies += gs.ScoreAndLives.deadPacman;
                             gs.Ghostpack.Add(inky);
                             Path emptyPathGhostInky = new Path(i, j);
                             tile[i, j] = emptyPathGhostInky;
@@ -97,6 +101,8 @@ namespace PacManLibrary
                             Vector2 targetGhost4 = new Vector2(4, 4);
                             Ghost clyde = new Ghost(gs, i, j, targetGhost4, GhostState.penned, Color.LightGreen);
                             //subscribe to collision and pacmandied event
+                            clyde.Collision += gs.ScoreAndLives.incrementScore;
+                            clyde.pacManDies += gs.ScoreAndLives.deadPacman;
                             gs.Ghostpack.Add(clyde);
                             Path emptyPathGhostClyde = new Path(i, j);
                             tile[i, j] = emptyPathGhostClyde;
@@ -106,7 +112,8 @@ namespace PacManLibrary
                         case "P":
                             Path emptyPathPacMan= new Path(i, j);
                             tile[i, j] = emptyPathPacMan;
-                            gs.Pacman = new Pacman(gs, i, j);                         
+                            gs.Pacman = new Pacman(gs);
+                            gs.Pacman.PacManPosition = new Vector2(i, j);                       
                             break;              
                     }                
                 }    

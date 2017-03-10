@@ -35,7 +35,7 @@ namespace PacManLibrary
         }
 
         // event handlers here
-        public virtual void deadPacman(ICollidable obj)
+        public virtual void deadPacman()
         {
             this.lives -= 1;
             if (this.lives == 0)
