@@ -11,16 +11,17 @@ namespace PacManLibrary
     public class Maze 
     {
         private Tile[,] maze;
+        public event PacmanWonHandler PacmanWon;
 
         public Maze()
         {
             //base(x)
-            //Still working on this one
-            maze = new Maze
+            //Still working on this one, dont think it works
+            //maze = new Tile[maze.GetLength(0),maze.GetLength(1)];
         }
         public void SetTiles(Tile[,] tile)
         {
-
+            this.maze = tile;
         }
 
         
@@ -38,7 +39,7 @@ namespace PacManLibrary
             }
         }
 
-        //The length of a row
+        //Dont think this worked
         public int Size
         {
             get { return maze.GetLength(0); }
@@ -47,34 +48,61 @@ namespace PacManLibrary
         public List<Tile> GetAvailableNeighbours(Vector2 position, Direction direction)
         {
             List<Tile> availables = new List<Tile>();
-
+            int x = (int)position.X;
+            int y = (int)position.Y;
             switch (direction)
             {
                 case Direction.Left:
-                    if(maze((int)position.X, (int)position.Y).Member//ghcfvhgvchj
+                    if(maze[x - 1, y].CanEnter())
+                        availables.Add(maze[x - 1, y]);//Left
+                    if(maze[x, y-1].CanEnter())
+                        availables.Add(maze[x, y - 1]);//Up
+                    if(maze[x, y+1].CanEnter())
+                        availables.Add(maze[x, y + 1]);//Down
                     break;
 
                 case Direction.Right:
+                    if (maze[x, y-1].CanEnter())
+                        availables.Add(maze[x, y - 1]);//Up
+                    if (maze[x + 1, y].CanEnter())
+                        availables.Add(maze[x + 1, y]);//Right
+                    if (maze[x, y + 1].CanEnter())
+                        availables.Add(maze[x, y + 1]);//Down
                     break;
 
                 case Direction.Up:
+                    if (maze[x + 1, y].CanEnter())
+                        availables.Add(maze[x + 1, y]);//Right
+                    if (maze[x, y + 1].CanEnter())
+                        availables.Add(maze[x, y + 1]);//Down
+                    if (maze[x - 1, y].CanEnter())
+                        availables.Add(maze[x - 1, y]);//Left
                     break;
 
                 case Direction.Down:
+                    if (maze[x - 1, y].CanEnter())
+                        availables.Add(maze[x - 1, y]);//Left
+                    if (maze[x, y-1].CanEnter())
+                        availables.Add(maze[x, y - 1]);//Up
+                    if (maze[x + 1, y].CanEnter())
+                        availables.Add(maze[x + 1, y]);//Right
                     break;
             }
             return availables;
         }
 
-        //There has to be a more efficient way to get this done but at the moment this is th eonly
+        //There has to be a more efficient way to get this done but at the moment this is the only
         public void CheckMembersLeft()
-        {
-            for( int i = 0; i < maze.GetLength(0); i++)
+        {//definately not gonna work, but the idea is down
+            bool left = true;
+            foreach(Path tile in maze)
             {
-                for (int j = 0; j < maze.GetLength(1); j++) {
-
-                }
+                if(!(tile.IsEmpty()))
+                    left = false;
+                    break;
             }
+            if(left)
+                PacmanWon?.Invoke();
         }
     }
 }

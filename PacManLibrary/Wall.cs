@@ -10,8 +10,12 @@ namespace PacManLibrary
 {
     public class Wall : Tile
     {
+        private int x;
+        private int y;
         public Wall(int x, int y) : base(x, y)
         {
+            this.x = x;
+            this.y = y;
         }
 
         public override bool CanEnter()

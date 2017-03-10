@@ -27,8 +27,7 @@ namespace PacManLibrary
 
         public override void Collide()
         {
-            //I though it went like this but it doesnt
-            //member.Collide;
+            member.Collide();
         }
 
         public override bool IsEmpty()
