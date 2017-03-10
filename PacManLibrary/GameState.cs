@@ -49,7 +49,7 @@ namespace PacManLibrary
                             break;
                         case "p":
                             Pellet pel = new Pellet();
-                            Path pelletPath = new Path(i, j, pel);
+                            Path pelletPath = new Path(i, j, pel);                    
                             // but IncrementScore is protected                
                             //pel.Collision += gs.ScoreAndLives.incrementScore(pelletPath);
                             tile[i, j] = pelletPath;                  
@@ -66,6 +66,7 @@ namespace PacManLibrary
                         case "e":
                             Energizer energizer = new Energizer(gs.Ghostpack);
                             Path energPath = new Path(i, j, energizer);
+
                             //energizer.Collision += gs.ScoreAndLives.incrementScore(energPath);
                             tile[i, j] = energPath;
                             break;

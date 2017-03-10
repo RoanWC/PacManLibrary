@@ -26,12 +26,6 @@ namespace PacManLibrary
         public void Collide()
         {
             this.points += 100;
-            onCollision(this.points);
-        }
-        protected virtual void onCollision(int points)
-        {
-            if (Collision != null)
-                Collision(points);
         }
     }
 }
