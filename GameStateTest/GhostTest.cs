@@ -19,7 +19,8 @@ namespace GameStateTest
             //act
             Ghost ghost = new Ghost(gs, 5, 5, target, GhostState.chase, Color.Red);
 
-
+            //assert
+            Assert.AreEqual(GhostState.scared, ghost.CurrentState);
         }
     }
 }
