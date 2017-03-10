@@ -49,10 +49,8 @@ namespace PacManLibrary
         protected virtual void incrementScore(ICollidable obj)
         {
             //Subscribing the object's collision event to its collide method
-            obj.Collision += obj.Collide;
-            //if(obj.Collision != null)
-
-
+            this.score += obj.Points;
+   
         } 
 
     }

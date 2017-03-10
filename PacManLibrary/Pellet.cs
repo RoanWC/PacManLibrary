@@ -22,7 +22,14 @@ namespace PacManLibrary
         public void Collide()
         {
             this.points += 10;
+            onCollision(this);
 
+        }
+        protected virtual void onCollision(ICollidable pellet)
+        {
+            if (Collision != null)
+                Collision(pellet);
+            //firing event.. ScoreAndLive's incremenetScore method will be called and passed onto it the pellet object
         }
 
  

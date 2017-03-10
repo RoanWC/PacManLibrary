@@ -24,7 +24,7 @@ namespace PacManLibrary
         }
         public void Move(Direction dir)
         {
-            // look at scared.cs
+            
         }
         public Vector2 PacManPosition
         {
