@@ -25,23 +25,35 @@ namespace PacManLibrary
         public void Move(Direction dir)
         {
            List<Tile> availableTiles = maze.GetAvailableNeighbours(PacManPosition, dir);
-            Tile currentPosition = maze[(int)PacManPosition.X, (int)PacManPosition.Y];
-            
-            foreach(Tile tile in availableTiles)
-            {
+            int x = (int)PacManPosition.X;
+            int y = (int)PacManPosition.Y;
+
                 switch (dir)
                 {
-                    
+                    case Direction.Up:
+                        if (availableTiles.Contains(maze[x, y - 1]))                       
+                            PacManPosition = new Vector2(x, y - 1);
+                        
+                        break;
 
-                }
+                    case Direction.Down:
+                        if (availableTiles.Contains(maze[x, y + 1]))
+                            PacManPosition = new Vector2(x, y + 1);
+                        
+                        break;
 
+                    case Direction.Left:
+                        if (availableTiles.Contains(maze[x - 1, y]))
+                            PacManPosition = new Vector2(x - 1, y);
+                        
+                        break;
 
-
-
-
+                   case Direction.Right:
+                        if (availableTiles.Contains(maze[x + 1, y]))                      
+                            PacManPosition = new Vector2(x + 1, y);
+                                           
+                        break;            
             }
-
-
         }
         public Vector2 PacManPosition
         {

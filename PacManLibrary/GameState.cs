@@ -86,7 +86,7 @@ namespace PacManLibrary
                             gs.Pen.AddToPen(pinky);
                             break;
                         case "3":
-                            Vector2 targetGhost3 = new Vector2(2,2);
+                            Vector2 targetGhost3 = new Vector2(2 ,2);
                             Ghost inky = new Ghost(gs, i, j, targetGhost3, GhostState.penned, Color.Cyan);
                             //subscribe to collision and pacmandied event
                             inky.Collision += gs.ScoreAndLives.incrementScore;
