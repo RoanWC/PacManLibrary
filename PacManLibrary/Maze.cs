@@ -24,8 +24,6 @@ namespace PacManLibrary
             this.maze = tile;
         }
 
-        
-
         public Tile this[int index1, int indexer2]
         {
             get
@@ -93,7 +91,7 @@ namespace PacManLibrary
 
         //There has to be a more efficient way to get this done but at the moment this is the only
         public void CheckMembersLeft()
-        {//definately not gonna work, but the idea is down
+        {
             bool left = true;
             foreach(Path tile in maze)
             {
