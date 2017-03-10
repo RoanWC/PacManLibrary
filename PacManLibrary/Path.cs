@@ -48,7 +48,8 @@ namespace PacManLibrary
         /// </summary>
         public override void Collide()
         {
-            member.Collide();
+            member.Collide();//IDK  ABOUT THIS
+
         }
 
         /// <summary>
@@ -63,14 +64,15 @@ namespace PacManLibrary
                 return false;
             return true;
         }
-        //THIS COMMENT STILL NEEDS WORK
+
         /// <summary>
-        /// This method will return an icollidable member
+        /// This method will return a member that can be 
+        /// collided with.
         /// </summary>
         /// <returns></returns>
         public override ICollidable Member()
         {
-            return member;
+            return member;//IDK  ABOUT THIS
         }
     }
 }
