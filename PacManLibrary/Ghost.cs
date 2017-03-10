@@ -38,12 +38,12 @@ namespace PacManLibrary
         }
 
         //event declarations
-        public event DeadPacManHandler pacManDies;
+        public event DeadPacManHandler PacManDies;
         public event CollisionHandler Collision;
 
         protected virtual void OnPacManDies(ICollidable i)
         {
-            pacManDies?.Invoke();
+            PacManDies?.Invoke();
         }
         protected virtual void OnCollision(ICollidable i)
         {
@@ -116,6 +116,7 @@ namespace PacManLibrary
         {
             IGhostState scaredState = new Scared(this, maze);
             gStates.Add(GhostState.scared, scaredState);
+            scaredState.Collision += OnCollision;
 
             IGhostState chaseState = new Chase(this, maze, target, pacman);
             gStates.Add(GhostState.chase, chaseState);

@@ -8,6 +8,8 @@ using Microsoft.Xna.Framework;
 
 namespace PacManLibrary
 {
+
+
     /// <summary>
     /// The Scared class encapsulates the required behaviour when a Ghost is in scared state. The Ghost will
     /// change direction immediately upon instantiating the Scared state. Each move is subsequently randomly
@@ -18,6 +20,8 @@ namespace PacManLibrary
     {
         private Ghost ghost;
         private Maze maze;
+
+        public event CollisionHandler Collision;
 
         /// <summary>
         /// Two-parameter constructor to initialize the Scared state. 
@@ -83,7 +87,7 @@ namespace PacManLibrary
         }
         public void Collide()
         {
-
+            Collision?.Invoke(ghost);
         }
     }
 }

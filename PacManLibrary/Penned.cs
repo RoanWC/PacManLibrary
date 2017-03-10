@@ -21,7 +21,7 @@ namespace PacManLibrary
         public void Move()
         {
             Tile current = maze[(int)ghost.Position.X, (int)ghost.Position.Y];
-            List<Tile> places = maze.GetAvailableNeibours(ghost.Position, ghost.Direction);
+            List<Tile> places = maze.GetAvailableNeighbours(ghost.Position, ghost.Direction);
             int numPlaces = places.Count;
 
             if(numPlaces == 0)
@@ -42,9 +42,9 @@ namespace PacManLibrary
 
             ghost.Position = places[choice].Position;
         }
-        public void Collide()
+        public void Collision()
         {
-
+            Collision?.invoke(ghost);
         }
     }
 }
