@@ -32,12 +32,11 @@ namespace PacManLibrary
         }
         public void CheckCollisions()
         {
-            // check collision with all the other objects on the maze
+            // check collision with each ghost 
              for(int i = 0; i < this.ghosts.Count; i++)
             {
-                if (ghosts[i].Position == this.position)
-                {
-                    this.controller.Score.Lives -= 1;
+                if(ghosts[i].Position == PacManPosition){
+                    
                 }
                
             }

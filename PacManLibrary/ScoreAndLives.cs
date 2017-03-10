@@ -41,6 +41,8 @@ namespace PacManLibrary
         // event handlers here
         protected virtual void deadPacman()
         {
+            // maybe execute gameover when lives is equal to 0 
+            // otherwise remove one life every time this method is invoked 
             if (GameOver != null)
                 GameOver();
         }        
