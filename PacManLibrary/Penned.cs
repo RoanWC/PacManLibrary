@@ -10,6 +10,7 @@ namespace PacManLibrary
     {
         private Ghost ghost;
         private Maze maze;
+        public event CollisionHandler Collision;
 
 
         public Penned(Ghost ghost, Maze maze)
@@ -42,9 +43,9 @@ namespace PacManLibrary
 
             ghost.Position = places[choice].Position;
         }
-        public void Collision()
+        public void Collide()
         {
-            Collision?.invoke(ghost);
+            throw new NotSupportedException("Ghosts who are in the pen do not collide with anything");
         }
     }
 }

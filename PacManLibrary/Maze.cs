@@ -42,7 +42,7 @@ namespace PacManLibrary
         {
             get { return maze.GetLength(0); }
         }
-
+         
         public List<Tile> GetAvailableNeighbours(Vector2 position, Direction direction)
         {
             List<Tile> availables = new List<Tile>();
