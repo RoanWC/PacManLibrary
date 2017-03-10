@@ -68,7 +68,7 @@ namespace PacManLibrary
                             Ghost blinky = new Ghost(gs, i, j, targetGhost1, GhostState.chase, Color.Red);
 
                             blinky.Collision += gs.ScoreAndLives.incrementScore;
-                            blinky.pacManDies += gs.ScoreAndLives.deadPacman;               
+                            blinky.PacManDies += gs.ScoreAndLives.deadPacman;               
                             gs.Ghostpack.Add(blinky);
                             Path emptyPathGhostBlinky = new Path(i, j);
                             tile[i, j] = emptyPathGhostBlinky;
@@ -78,7 +78,7 @@ namespace PacManLibrary
                             Ghost pinky = new Ghost(gs, i, j, targetGhost2, GhostState.penned, Color.HotPink);
                             //subscribe to collision and pacmandied event
                             pinky.Collision += gs.ScoreAndLives.incrementScore;
-                            pinky.pacManDies += gs.ScoreAndLives.deadPacman;
+                            pinky.PacManDies += gs.ScoreAndLives.deadPacman;
                             gs.Ghostpack.Add(pinky);
                             Path emptyPathGhostPinky = new Path(i, j);
                             tile[i, j] = emptyPathGhostPinky;
@@ -90,7 +90,7 @@ namespace PacManLibrary
                             Ghost inky = new Ghost(gs, i, j, targetGhost3, GhostState.penned, Color.Cyan);
                             //subscribe to collision and pacmandied event
                             inky.Collision += gs.ScoreAndLives.incrementScore;
-                            inky.pacManDies += gs.ScoreAndLives.deadPacman;
+                            inky.PacManDies += gs.ScoreAndLives.deadPacman;
                             gs.Ghostpack.Add(inky);
                             Path emptyPathGhostInky = new Path(i, j);
                             tile[i, j] = emptyPathGhostInky;
@@ -102,7 +102,7 @@ namespace PacManLibrary
                             Ghost clyde = new Ghost(gs, i, j, targetGhost4, GhostState.penned, Color.LightGreen);
                             //subscribe to collision and pacmandied event
                             clyde.Collision += gs.ScoreAndLives.incrementScore;
-                            clyde.pacManDies += gs.ScoreAndLives.deadPacman;
+                            clyde.PacManDies += gs.ScoreAndLives.deadPacman;
                             gs.Ghostpack.Add(clyde);
                             Path emptyPathGhostClyde = new Path(i, j);
                             tile[i, j] = emptyPathGhostClyde;
