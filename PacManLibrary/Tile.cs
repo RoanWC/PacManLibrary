@@ -8,9 +8,15 @@ using Microsoft.Xna.Framework;
 
 namespace PacManLibrary
 {
+    /// <summary>
+    /// The Tile class is the base for what will be walls and paths.
+    /// This abstract Tile class will declare what we expect walls 
+    /// and paths to be able to do at the basic level.
+    /// </summary>
     public abstract class Tile
     {
         private Vector2 vector;
+
 
         public Tile(int x, int y)
         {
