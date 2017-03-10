@@ -41,7 +41,7 @@ namespace PacManLibrary
             int choice = 0;
             float dist = places[i].GetDistance(target);
 
-            for (int i = 0; i < numPosible; i++)
+            for (i = 0; i < numPosible; i++)
             {
                 if (places[i].GetDistance(target) < dist)
                 {
