@@ -8,29 +8,21 @@ using Microsoft.Xna.Framework;
 
 namespace PacManLibrary
 {
-    //public delegate void CollisionHander(int points);
     public class Pellet : ICollidable
     {
-        private int points;
+        private int points = 10;
 
         public event CollisionHandler Collision;
         public int Points
         {
-            get { return points; }
-           // set { points = value; }
+            get { return this.points; }
         }
         public void Collide()
         {
-            this.points += 10;
-            onCollision(this);
-
+           if (Collision != null)
+                Collision(this);
         }
-        protected virtual void onCollision(ICollidable pellet)
-        {
-            if (Collision != null)
-                Collision(pellet);
-            //firing event.. ScoreAndLive's incremenetScore method will be called and passed onto it the pellet object
-        }
+  
 
  
     }

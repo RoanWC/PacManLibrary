@@ -11,12 +11,6 @@ namespace PacManLibrary
 {
     public class GameState
     {
-        // not sure
-       /* private Pacman pacman;
-        private GhostPack ghostpack;
-        private Maze maze;
-        private Pen pen;
-        private ScoreAndLives score;*/
         public static GameState Parse(string filecontent)
         {
             GameState gs = new GameState();
@@ -49,9 +43,9 @@ namespace PacManLibrary
                             break;
                         case "p":
                             Pellet pel = new Pellet();
-                            Path pelletPath = new Path(i, j, pel);                    
-                            // but IncrementScore is protected                
-                            //pel.Collision += gs.ScoreAndLives.incrementScore(pelletPath);
+                            Path pelletPath = new Path(i, j, pel);    
+                            // subscribing to that event                              
+                            pel.Collision += gs.ScoreAndLives.incrementScore;
                             tile[i, j] = pelletPath;                  
                             break;                  
                         case "m":
@@ -66,17 +60,15 @@ namespace PacManLibrary
                         case "e":
                             Energizer energizer = new Energizer(gs.Ghostpack);
                             Path energPath = new Path(i, j, energizer);
-
-                            //energizer.Collision += gs.ScoreAndLives.incrementScore(energPath);
+                            energizer.Collision += gs.ScoreAndLives.incrementScore;
                             tile[i, j] = energPath;
                             break;
                         case "1":
-                            // Ghost1 is not inside of pen tho
                             //(gs.Pacman.PacManPosition.X + 2, gs.Pacman.PacManPosition.Y)
                             Vector2 targetGhost1 = new Vector2(1,1);
                             Ghost blinky = new Ghost(gs, i, j, targetGhost1, GhostState.chase, Color.Red);
 
-                            //subscribe to collision and pacmandied event
+                            blinky.Collision += gs.ScoreAndLives.deadPacman;                
                             gs.Ghostpack.Add(blinky);
                             Path emptyPathGhostBlinky = new Path(i, j);
                             tile[i, j] = emptyPathGhostBlinky;

@@ -10,7 +10,7 @@ namespace PacManLibrary
 {
     public class Energizer : ICollidable
     {
-        private int points;
+        private int points = 100;
         private GhostPack ghosts;
 
         public event CollisionHandler Collision;
@@ -21,17 +21,12 @@ namespace PacManLibrary
         }
         public int Points
         {
-            get { return points; }
+            get { return this.points; }
         }
         public void Collide()
         {
-            this.points += 100;
-            onCollision(this);
-        }
-        protected virtual void onCollision(ICollidable obj)
-        {
             if (Collision != null)
-                Collision(obj);
+                Collision(this);
         }
     }
 }
