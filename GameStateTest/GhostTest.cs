@@ -1,6 +1,8 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using PacManLibrary;
+using Microsoft.Xna.Framework;
+
 
 namespace GameStateTest
 {
@@ -13,7 +15,11 @@ namespace GameStateTest
             //arange
             GameState gs = new GameState();
             Vector2 target = new Vector2(2, 2);
-            Ghost ghost = new Ghost(gs,5,5,target,
+
+            //act
+            Ghost ghost = new Ghost(gs, 5, 5, target, GhostState.chase, Color.Red);
+
+
         }
     }
 }
