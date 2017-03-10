@@ -30,7 +30,8 @@ namespace PacManLibrary
             //maze = new Tile[maze.GetLength(0),maze.GetLength(1)];
         }
         /// <summary>
-        /// This method takes in a 2d array of tiles and sets the maze 2d array 
+        /// This method takes in a 2d array of tiles and sets 
+        /// the maze variable to the tiles.
         /// </summary>
         /// <param name="tile"></param>
         public void SetTiles(Tile[,] tile)
@@ -45,6 +46,14 @@ namespace PacManLibrary
             }
         }
 
+        /// <summary>
+        /// This indexer will take as input two integers,
+        /// and these integers will refer to a position in
+        /// the 2d array.
+        /// </summary>
+        /// <param name="index1"></param>
+        /// <param name="index2"></param>
+        /// <returns></returns>
         public Tile this[int index1, int index2]
         {
             get
@@ -64,12 +73,20 @@ namespace PacManLibrary
             }
         }
 
-        //Dont think this worked
+        //This property will return the size of the maze.
         public int Size
         {
             get { return maze.GetLength(0); }
         }
-         
+
+        /// <summary>
+        /// This method will take a position and a direction as input and using the
+        /// position it will check all sides except for the opposite direction for 
+        /// an available tile that can be entered. 
+        /// </summary>
+        /// <param name="position"></param>
+        /// <param name="direction"></param>
+        /// <returns>List<Tile></returns>
         public List<Tile> GetAvailableNeighbours(Vector2 position, Direction direction)
         {
             List<Tile> availables = new List<Tile>();
@@ -116,7 +133,12 @@ namespace PacManLibrary
             return availables;
         }
 
-        //There has to be a more efficient way to get this done but at the moment this is the only
+        /// <summary>
+        /// This method will check each tile to see 
+        /// if there is a pellet or an energizer 
+        /// still in the maze, if there is pacmanWon 
+        /// event is fired.
+        /// </summary>
         public void CheckMembersLeft()
         {
             bool left = true;
