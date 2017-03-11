@@ -25,6 +25,7 @@ namespace PacManLibrary
         }
         public void Collide()
         {
+            ghosts.ScareGhost();          
             if (Collision != null)
                 Collision(this);
         }
