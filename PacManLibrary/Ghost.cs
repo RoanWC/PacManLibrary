@@ -77,7 +77,7 @@ namespace PacManLibrary
             Position = resetLocation.Position;
             if (state == GhostState.released)
             {                
-                CurrentState = gStates[GhostState.chase];
+                CurrentState =  gStates[GhostState.chase];
             }
             else
             {
@@ -85,12 +85,15 @@ namespace PacManLibrary
             }
         }
         /// <summary>
-        /// 
+        /// Calls the collide method of the ghosts current state.
         /// </summary>
         public void Collide()
         {
             CurrentState.Collide();
         }
+        /// <summary>
+        /// checks if the current ghost is on the same tile as pacman
+        /// </summary>
         public void CheckCollision()
         {
             if(pacman.PacManPosition == Position)
@@ -107,7 +110,9 @@ namespace PacManLibrary
             CurrentState.Move();
         }
 
-
+        /// <summary>
+        /// resets the ghost back to the pen
+        /// </summary>
         public void Reset()
         {
             pen.AddToPen(this);
