@@ -9,10 +9,25 @@ using System.IO;
 
 namespace PacManLibrary
 {
+    /// <summary>
+    /// This class is responsible to set all the objects at their correct 
+    ///  position depending on the letter in the file from which 
+    ///it is reading through. We can access the state of the game through 
+    /// the parse method.
+    /// </summary>
     public class GameState
     {
+        /// <summary>
+        /// This method gets passed to it a filename. It will read the file 
+        /// and set all the objects at their correct position depending 
+        /// on the letter in the file. It returns a static GameState object 
+        /// which allows us to access all the objects in the game.
+        /// </summary>
+        /// <param name="filecontent"></param>
+        /// <returns>GameState of the whole pacman game</returns>
         public static GameState Parse(string filecontent)
         {
+            // instantiating all objects 
             GameState gs = new GameState();
             Pen pen = new Pen();    
             Maze maze = new Maze();
@@ -79,9 +94,11 @@ namespace PacManLibrary
                             //subscribe to collision and pacmandied event
                             pinky.Collision += gs.ScoreAndLives.incrementScore;
                             pinky.PacManDies += gs.ScoreAndLives.deadPacman;
+                            // add ghost to ghostpack
                             gs.Ghostpack.Add(pinky);
                             Path emptyPathGhostPinky = new Path(i, j);
                             tile[i, j] = emptyPathGhostPinky;
+                            // adding empty tile to the pen
                             gs.Pen.AddTile(tile[i, j]);
                             gs.Pen.AddToPen(pinky);
                             break;
@@ -121,26 +138,46 @@ namespace PacManLibrary
             gs.Maze.SetTiles(tile);
             return gs;
         }
+        /// <summary>
+        /// Property which returns the PacMan object and sets it 
+        /// while reading through the file. 
+        /// </summary>
         public Pacman Pacman
         {
             get { return Pacman; }
             private set { Pacman = value; }
         }
+        /// <summary>
+        /// Property which returns the GhostPack object and sets it 
+        /// while reading through the file. 
+        /// </summary>
         public GhostPack Ghostpack
         {
             get { return Ghostpack; }
             private set { Ghostpack = value; }
         }
+        /// <summary>
+        /// Property which returns the Maze object and sets its tile 
+        /// by the end of the Parse method
+        /// </summary>
         public Maze Maze
         {
             get { return Maze; }
             private set { Maze = value; }
         }
+        /// <summary>
+        /// Property which returns the Pen object and sets it 
+        /// while reading through the file. 
+        /// </summary>
         public Pen Pen
         {
             get { return Pen; }
             private set { Pen = value; }
         }
+        /// <summary>
+        /// Property which returns the ScoreAndLives object and sets it 
+        /// while reading through the file. 
+        /// </summary>
         public ScoreAndLives ScoreAndLives
         {
             get { return ScoreAndLives; }
