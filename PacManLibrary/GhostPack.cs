@@ -19,7 +19,8 @@ namespace PacManLibrary
         private List<Ghost> ghosts;
         public List<Ghost> Ghosts
         {
-            get;
+            get { return ghosts; }
+            set { ghosts = value; }
         }
         /// <summary>
         /// Constructor to initialize the ghostList
@@ -76,7 +77,7 @@ namespace PacManLibrary
         /// <param name="g">ghost to be added to the list</param>
         public void Add(Ghost g)
         {
-            Ghosts.Add(g);
+            ghosts.Add(g);
         }
 
         public IEnumerator<Ghost> GetEnumerator()

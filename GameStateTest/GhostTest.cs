@@ -14,13 +14,28 @@ namespace GameStateTest
         {
             //arange
             GameState gs = new GameState();
+            
             Vector2 target = new Vector2(2, 2);
 
             //act
             Ghost ghost = new Ghost(gs, 5, 5, target, GhostState.chase, Color.Red);
 
             //assert
-            Assert.AreEqual(GhostState.scared, ghost.CurrentState);
+            Assert.AreEqual(ghost.Color, Color.Red);
+        }
+        
+        [TestMethod]
+        public void testTest()
+        {
+            //arrange
+            int x = 10;
+
+            //act
+            x = x + 5;
+            
+
+            //assert
+            Assert.AreEqual(15, x);
         }
     }
 }

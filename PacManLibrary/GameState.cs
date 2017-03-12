@@ -144,8 +144,8 @@ namespace PacManLibrary
         /// </summary>
         public Pacman Pacman
         {
-            get { return Pacman; }
-            private set { Pacman = value; }
+            get;
+            private set;
         }
         /// <summary>
         /// Property which returns the GhostPack object and sets it 
@@ -153,8 +153,8 @@ namespace PacManLibrary
         /// </summary>
         public GhostPack Ghostpack
         {
-            get { return Ghostpack; }
-            private set { Ghostpack = value; }
+            get;
+            private set;
         }
         /// <summary>
         /// Property which returns the Maze object and sets its tile 
@@ -162,8 +162,8 @@ namespace PacManLibrary
         /// </summary>
         public Maze Maze
         {
-            get { return Maze; }
-            private set { Maze = value; }
+            get;
+            private set;
         }
         /// <summary>
         /// Property which returns the Pen object and sets it 
@@ -171,8 +171,8 @@ namespace PacManLibrary
         /// </summary>
         public Pen Pen
         {
-            get { return Pen; }
-            private set { Pen = value; }
+            get;
+            private set;
         }
         /// <summary>
         /// Property which returns the ScoreAndLives object and sets it 
@@ -180,8 +180,8 @@ namespace PacManLibrary
         /// </summary>
         public ScoreAndLives ScoreAndLives
         {
-            get { return ScoreAndLives; }
-            private set { ScoreAndLives = value; }
+            get;
+            private set;
         }
     }
 }
