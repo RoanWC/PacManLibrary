@@ -14,23 +14,24 @@ namespace GameStateTest
             //arrange 
            GameState gs = new GameState();
             gs = GameState.Parse("levels.txt");
-            // expected w 
-            Tile w = gs.Maze[5,2];
-            Tile x = gs.Maze[11,11];
-            Tile one = gs.Maze[11,8];
-            Tile two = gs.Maze[9,10];
-            Tile three = gs.Maze[10,10];
-            Tile four = gs.Maze[11,10];
-            Tile pacman = gs.Maze[17, 10];
 
-
-            
             //act 
-
-            
+            Tile w = gs.Maze[5, 2];
+            Tile x = gs.Maze[11, 11];
+            Tile one = gs.Maze[11, 8];
+            Tile two = gs.Maze[9, 10];
+            Tile three = gs.Maze[10, 10];
+            Tile four = gs.Maze[11, 10];
+            Tile pacman = gs.Maze[17, 10];
 
             //assert
             Assert.AreEqual(w, "w");
+            Assert.AreEqual(x, "x");
+            Assert.AreEqual(one, "1");
+            Assert.AreEqual(two, "2");
+            Assert.AreEqual(three, "3");
+            Assert.AreEqual(four, "4");
+            Assert.AreEqual(pacman, "P");
 
         }
         [TestMethod]
@@ -38,6 +39,8 @@ namespace GameStateTest
             //arrange 
             Pellet p = new Pellet();
             int points = p.Points;
+
+            Assert.AreEqual(points, 10);
             
         }
         [TestMethod]
@@ -46,6 +49,8 @@ namespace GameStateTest
             GhostPack ghosts = new GhostPack();
             Energizer e = new Energizer(ghosts);
             int points = e.Points;
+
+            Assert.AreEqual(points, 100);
         }
         [TestMethod]
         public void TestScoreAndLives(){
@@ -62,7 +67,7 @@ namespace GameStateTest
             int lives = sc.Lives;
             int score = sc.Score;
             
-            Assert.Expected(10, score);
+            Assert.AreEqual(score, 10);
 
         }
     }
