@@ -111,8 +111,8 @@ namespace PacManLibrary
                 case Direction.Up:
                     if (maze[x + 1, y].CanEnter())
                         availables.Add(maze[x + 1, y]);//Right
-                    if (maze[x, y + 1].CanEnter())
-                        availables.Add(maze[x, y + 1]);//Down
+                    if (maze[x, y - 1].CanEnter())
+                        availables.Add(maze[x, y - 1]);//Up
                     if (maze[x - 1, y].CanEnter())
                         availables.Add(maze[x - 1, y]);//Left
                     break;
@@ -120,8 +120,8 @@ namespace PacManLibrary
                 case Direction.Down:
                     if (maze[x - 1, y].CanEnter())
                         availables.Add(maze[x - 1, y]);//Left
-                    if (maze[x, y-1].CanEnter())
-                        availables.Add(maze[x, y - 1]);//Up
+                    if (maze[x, y + 1].CanEnter())
+                        availables.Add(maze[x, y + 1]);//Down
                     if (maze[x + 1, y].CanEnter())
                         availables.Add(maze[x + 1, y]);//Right
                     break;
