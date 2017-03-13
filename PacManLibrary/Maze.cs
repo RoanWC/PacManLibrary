@@ -20,12 +20,7 @@ namespace PacManLibrary
         private int size;
         public event PacmanWonHandler PacmanWon;
 
-        /// <summary>
-        /// This is an empty constructor becasue setTiles is 
-        /// responsible for setting all of the tiles.
-        /// </summary>
-        //public Maze() 
-        //{}
+        
         /// <summary>
         /// This method takes in a 2d array of tiles and sets 
         /// the maze variable to the tiles.

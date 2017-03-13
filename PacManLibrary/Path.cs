@@ -48,7 +48,7 @@ namespace PacManLibrary
         /// </summary>
         public override void Collide()
         {
-            member.Collide();//IDK  ABOUT THIS
+            member.Collide();
 
         }
 
@@ -72,7 +72,7 @@ namespace PacManLibrary
         /// <returns></returns>
         public override ICollidable Member()
         {
-            return member;//IDK  ABOUT THIS
+            return member;
         }
     }
 }

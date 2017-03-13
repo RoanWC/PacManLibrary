@@ -18,7 +18,7 @@ namespace GameStateTest
             //arrange
             GameState gs = new GameState();
             gs = GameState.Parse(@"H:\levels.csv");
-            //HAVE TO CHANGE THE PATH 
+            
 
             //act
             Maze maze = gs.Maze;
@@ -36,7 +36,7 @@ namespace GameStateTest
         {
             //act
             GameState gs = new GameState();
-            gs = GameState.Parse(@"H:\C# Jaya\C# Pacman\levels.txt");
+            gs = GameState.Parse(@"H:\levels.txt");
             Pellet pellet = new Pellet();
 
             //arrange
@@ -76,9 +76,13 @@ namespace GameStateTest
         {
             //arrange
             GameState game1Pellet = new GameState();
+            //This url is a very small csv file that is 2 by 2 that contains 1 pellet
+            //had issues with getting it as a reference
             game1Pellet = GameState.Parse(@"H:\levelsPen0Pellet.txt");
 
             GameState gameAllWalls = new GameState();
+            //This url is a very small csv file that is 2 by 2 that contains 0 collidable members
+            //had issues with getting it as a reference
             gameAllWalls = GameState.Parse(@"H:\levelsPen0Pellet.txt");
 
             //act

@@ -8,7 +8,7 @@ namespace GameStateTest
     public class TileTest
     {
         [TestMethod]
-        public void TestPostion()
+        public void TestTilePostion()
         {
             //arrange
             Wall wall1 = new Wall(1, 1);
@@ -16,6 +16,7 @@ namespace GameStateTest
 
             //act
             //assert
+            Assert.AreEqual(wall1, wall2);
         }
 
         [TestMethod]
