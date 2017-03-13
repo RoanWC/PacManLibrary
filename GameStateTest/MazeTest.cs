@@ -17,7 +17,7 @@ namespace GameStateTest
         {
             //arrange
             GameState gs = new GameState();
-            gs = GameState.Parse(@"H:\C# Jaya\C# Pacman\levels.txt");
+            gs = GameState.Parse(@"H:\levels.csv");
             //HAVE TO CHANGE THE PATH 
 
             //act

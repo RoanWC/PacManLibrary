@@ -56,7 +56,7 @@ namespace PacManLibrary
             set
             {
                 if (index1 < 0 || index2 < 0 ||
-                   index1 >= Size || index2 >= Size)
+                   index1 > Size || index2 > Size)
                     throw new ArgumentOutOfRangeException("The indexes must be in range");
                 maze[index1, index2] = value;
             }
