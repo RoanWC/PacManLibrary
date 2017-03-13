@@ -28,7 +28,7 @@ namespace PacManLibrary
             this.ghosts = new Queue<Ghost>();
             this.timers = new List<Timer>();
             pen = new List<Tile>();
-        }
+        } 
 
         /// <summary>
         /// This method add Tiles to the Pen area. It is meant to be invoked when the game is being
