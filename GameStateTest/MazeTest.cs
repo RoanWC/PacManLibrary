@@ -58,7 +58,7 @@ namespace GameStateTest
         {
             //arrange
             GameState gs = new GameState();
-            gs = GameState.Parse(@"H:\C# Jaya\C# Pacman\levels.txt");
+            gs = GameState.Parse(@"H:\levels.txt");
             //3 , 3 direction Up
             
             //act
@@ -69,6 +69,30 @@ namespace GameStateTest
             //assert
             Assert.AreEqual(1, list1.Count);
             Assert.AreEqual(2, list2.Count);
+        }
+
+        [TestMethod]
+        public void TestCheckMembersLeft()
+        {
+            //arrange
+            GameState game1Pellet = new GameState();
+            game1Pellet = GameState.Parse(@"H:\levelsPen0Pellet.txt");
+
+            GameState gameAllWalls = new GameState();
+            gameAllWalls = GameState.Parse(@"H:\levelsPen0Pellet.txt");
+
+            //act
+            Maze maze1Pel = game1Pellet.Maze;
+            Maze maze0Pel = gameAllWalls.Maze;
+            var wasFired1 = false;
+            var wasFired0 = false;
+
+            maze0Pel.PacmanWon += delegate () { wasFired0 = true; };
+            maze1Pel.PacmanWon += delegate () { wasFired1 = true; };
+
+            //assert
+            Assert.IsTrue(wasFired0);
+            Assert.IsFalse(wasFired1);
         }
     }
 }
