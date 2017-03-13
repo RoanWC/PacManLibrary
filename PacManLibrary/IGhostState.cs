@@ -8,7 +8,9 @@ using Microsoft.Xna.Framework;
 
 namespace PacManLibrary
 {
-
+    /// <summary>
+    /// deffines the interface for the IGhostState
+    /// </summary>
     public interface IGhostState
     {
         void Move();

@@ -46,7 +46,7 @@ namespace PacManLibrary
         /// </summary>
         public void ResetGhost()
         {
-            foreach(Ghost g in ghosts)
+            foreach (Ghost g in ghosts)
             {
                 g.Reset();
             }
@@ -61,6 +61,8 @@ namespace PacManLibrary
                 g.ChangeState(GhostState.scared);
             }
         }
+
+
         /// <summary>
         /// tells all the ghosts to move
         /// </summary>

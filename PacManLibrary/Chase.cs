@@ -7,6 +7,9 @@ using Microsoft.Xna.Framework;
 
 namespace PacManLibrary
 {
+    /// <summary>
+    /// defines the behavior for ghosts who are in the chase state.
+    /// </summary>
     public class Chase : IGhostState
     {
         private Ghost ghost;

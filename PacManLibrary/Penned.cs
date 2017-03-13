@@ -12,13 +12,20 @@ namespace PacManLibrary
         private Maze maze;
         public event CollisionHandler Collision;
 
-
+        /// <summary>
+        /// Constructor for the penned state. 
+        /// </summary>
+        /// <param name="ghost">a hande to the ghost</param>
+        /// <param name="maze">a handle to the maze</param>
         public Penned(Ghost ghost, Maze maze)
         {
             this.ghost = ghost;
             this.maze = maze;
 
         }
+        /// <summary>
+        /// deffines how the ghost will move inside the pen
+        /// </summary>
         public void Move()
         {
             Tile current = maze[(int)ghost.Position.X, (int)ghost.Position.Y];
@@ -43,6 +50,9 @@ namespace PacManLibrary
 
             ghost.Position = places[choice].Position;
         }
+        /// <summary>
+        /// not supported for ghosts who are in the penned state
+        /// </summary>
         public void Collide()
         {
             throw new NotSupportedException("Ghosts who are in the pen do not collide with anything");

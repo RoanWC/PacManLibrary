@@ -85,6 +85,9 @@ namespace PacManLibrary
 
             ghost.Position = places[choice].Position;
         }
+        /// <summary>
+        /// triggers the collision event when the ghost gets eaten by a pacman
+        /// </summary>
         public void Collide()
         {
             Collision?.Invoke(ghost);

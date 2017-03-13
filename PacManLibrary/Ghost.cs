@@ -20,7 +20,7 @@ namespace PacManLibrary
         private Pen pen;
         private Maze maze;
         private Timer scared;
-        private Dictionary<GhostState, IGhostState> gStates = new Dictionary<GhostState, IGhostState>(3);
+        public Dictionary<GhostState, IGhostState> gStates = new Dictionary<GhostState, IGhostState>(3);
         private Tile resetLocation;
 
         //property declarations
@@ -41,6 +41,7 @@ namespace PacManLibrary
         public event DeadPacManHandler PacManDies;
         public event CollisionHandler Collision;
 
+        //event triggers
         protected virtual void OnPacManDies(ICollidable i)
         {
             PacManDies?.Invoke();
@@ -119,6 +120,9 @@ namespace PacManLibrary
         {
             pen.AddToPen(this);
         }
+        /// <summary>
+        /// creates the IghostState objects for all the possible states and puts them into a dictionary
+        /// </summary>
         public void CreateStates()
         {
             IGhostState scaredState = new Scared(this, maze);

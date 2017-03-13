@@ -59,6 +59,7 @@
     <Compile Include="PathTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="GhostTest.cs" />
+    <Compile Include="ScaredTest.cs" />
     <Compile Include="TileTest.cs" />
     <Compile Include="WallTest.cs" />
   </ItemGroup>
