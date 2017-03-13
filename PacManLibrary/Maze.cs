@@ -16,7 +16,7 @@ namespace PacManLibrary
     /// </summary>
     public class Maze 
     {
-        private Tile[,] maze = null;
+        private Tile[,] maze;
         public event PacmanWonHandler PacmanWon;
 
         /// <summary>
