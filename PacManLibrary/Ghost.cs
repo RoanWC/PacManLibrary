@@ -21,7 +21,7 @@ namespace PacManLibrary
         private Maze maze;
         private Timer scared;
         private Dictionary<GhostState, IGhostState> gStates = new Dictionary<GhostState, IGhostState>(3);
-        private Path resetLocation;
+        private Tile resetLocation;
 
         //property declarations
         public Vector2 Position { get; set; }
@@ -61,12 +61,14 @@ namespace PacManLibrary
         /// <param name="color">colour that the ghost will be painted</param>
         public Ghost(GameState g, int x, int y, Vector2 target, GhostState state, Color color)
         {
+            resetLocation = g.Maze[x, y];
             CreateStates();
             this.pacman = g.Pacman;
             Position = new Vector2(x, y);
             this.target = target;
             ChangeState(state);
-            Color = color;            
+            Color = color;
+
         }
         /// <summary>
         /// Changes the ghosts current state

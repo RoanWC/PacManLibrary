@@ -23,8 +23,8 @@ namespace PacManLibrary
         /// This is an empty constructor becasue setTiles is 
         /// responsible for setting all of the tiles.
         /// </summary>
-        public Maze() 
-        {}
+        //public Maze() 
+        //{}
         /// <summary>
         /// This method takes in a 2d array of tiles and sets 
         /// the maze variable to the tiles.
@@ -32,14 +32,7 @@ namespace PacManLibrary
         /// <param name="tile"></param>
         public void SetTiles(Tile[,] tile)
         {
-            
-            for(int i = 0; i < Size; i++)
-            {
-                for(int j = 0; j < Size; j++)
-                {
-                    maze[i, j] = tile[i, j];
-                }
-            }
+            this.maze = tile;
         }
 
         /// <summary>
