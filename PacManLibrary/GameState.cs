@@ -41,7 +41,7 @@ namespace PacManLibrary
             Pacman pacMan = new Pacman(gs);
 
             gs.ScoreAndLives = score;
-          //  gs.Pacman = pacMan;
+            gs.Pacman = pacMan;
 
             string[] read = File.ReadAllLines(filecontent);
             Tile[,] tile = new Tile[read.Length, read[0].Length];

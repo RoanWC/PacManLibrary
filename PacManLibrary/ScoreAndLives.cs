@@ -25,8 +25,8 @@ namespace PacManLibrary
         /// <param name="gs"></param>
         public ScoreAndLives(GameState gs)
         {
-            lives = gs.ScoreAndLives.Lives;
-            score = gs.ScoreAndLives.Score;
+            lives = 3;
+            score = 0;
         }
          /// <summary>
         /// Property which returns or sets the total amount of lives the pacman has. 

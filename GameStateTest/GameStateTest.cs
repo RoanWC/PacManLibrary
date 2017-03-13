@@ -52,7 +52,7 @@ namespace GameStateTest
 
             Assert.AreEqual(points, 100);
         }
-        
+        /*
         [TestMethod]
         public void TestScoreAndLives(){
              GameState gs = new GameState();
@@ -70,6 +70,6 @@ namespace GameStateTest
             
             Assert.AreEqual(score, 10);
 
-        }
+        }*/
     }
 }
