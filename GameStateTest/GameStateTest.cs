@@ -13,7 +13,7 @@ namespace GameStateTest
         {
             //arrange 
            GameState gs = new GameState();
-            gs = GameState.Parse("levels.txt");
+            gs = GameState.Parse("levels.csv");
 
             //act 
             Tile w = gs.Maze[5, 2];

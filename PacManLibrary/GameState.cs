@@ -44,7 +44,7 @@ namespace PacManLibrary
             gs.Pacman = pacMan;
 
             string[] read = File.ReadAllLines(filecontent);
-            Tile[,] tile = new Tile[read.Length, read[0].Length];
+            Tile[,] tile = new Tile[read.Length, read.Length];
            
             for (int i = 0; i < read.Length; i++)
             {  
