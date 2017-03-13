@@ -23,6 +23,27 @@ namespace GameStateTest
             //assert
             Assert.AreEqual(ghost.Color, Color.Red);
         }
+        [TestMethod]
+        public void testChangeStateReleased()
+        {
+            //arange
+            GameState gs = new GameState();
+            Vector2 target = new Vector2(2, 2);
+            Ghost ghost = gs.Ghostpack[1];
+
+        }
+
+        [TestMethod]
+        public void testChangeStatePenned()
+        {
+
+        }
+        [TestMethod]
+        public void testChangeStateChase()
+        {
+
+        }
+
         
         [TestMethod]
         public void testTest()

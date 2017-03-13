@@ -17,6 +17,7 @@ namespace PacManLibrary
     /// </summary>
     public class GameState
     {
+
         /// <summary>
         /// This method gets passed to it a filename. It will read the file 
         /// and set all the objects at their correct position depending 
@@ -163,7 +164,7 @@ namespace PacManLibrary
         public Maze Maze
         {
             get;
-            private set;
+            set;
         }
         /// <summary>
         /// Property which returns the Pen object and sets it 

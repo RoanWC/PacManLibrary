@@ -17,6 +17,7 @@ namespace PacManLibrary
     public class Maze 
     {
         private Tile[,] maze;
+        private int size;
         public event PacmanWonHandler PacmanWon;
 
         /// <summary>
@@ -33,6 +34,8 @@ namespace PacManLibrary
         public void SetTiles(Tile[,] tile)
         {
             this.maze = tile;
+            Size = tile.GetLength(0);
+            
         }
 
         /// <summary>
@@ -65,7 +68,8 @@ namespace PacManLibrary
         //This property will return the size of the maze.
         public int Size
         {
-            get { return maze.GetLength(0); }
+            get { return size; }
+            set { size = value; }
         }
 
         /// <summary>
