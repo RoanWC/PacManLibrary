@@ -32,7 +32,7 @@ namespace PacManLibrary
             this.ghost = ghost;
             this.maze = maze;
             this.pacman = pacman;
-            this.target = target;
+            this.target = new Vector2(target.X, target.Y);
         }
 
         /// <summary>
