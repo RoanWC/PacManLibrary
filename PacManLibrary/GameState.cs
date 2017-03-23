@@ -29,20 +29,12 @@ namespace PacManLibrary
         public static GameState Parse(string filecontent)
         {
             // instantiating all objects 
-            GameState gs = new GameState();
-            Pen pen = new Pen();    
-            Maze maze = new Maze();
-            GhostPack ghostPack = new GhostPack();
-
-            gs.Pen = pen;
-            gs.Maze = maze;
-            gs.Ghostpack = ghostPack;
-           
-            ScoreAndLives score = new ScoreAndLives(gs);
-            Pacman pacMan = new Pacman(gs);
-
-            gs.ScoreAndLives = score;
-            gs.Pacman = pacMan;
+            GameState gs = new GameState();   
+            gs.Pen = new Pen();
+            gs.Maze = new Maze();
+            gs.Ghostpack = new GhostPack();
+            gs.ScoreAndLives = new ScoreAndLives(gs);
+            gs.Pacman = new Pacman(gs);
 
             string[] read = File.ReadAllLines(filecontent);
             Tile[,] tile = new Tile[read.Length, read.Length];
