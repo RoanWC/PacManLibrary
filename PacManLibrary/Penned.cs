@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PacManLibrary
 {
-    class Penned : IGhostState
+    public class Penned : IGhostState
     {
         private Ghost ghost;
         private Maze maze;
