@@ -13,27 +13,35 @@ namespace GameStateTest
         {
             //arrange 
            GameState gs = new GameState();
-            gs = GameState.Parse("levels.csv");
+            gs = GameState.Parse("test.txt");
+            Tile[,] tile = new Tile[3, 3];
+            Wall w = new Wall(8, 0);
+            Maze m1 = new Maze();
 
-            //act 
-            Tile w = gs.Maze[5, 2];
-            Tile x = gs.Maze[11, 11];
-            Tile one = gs.Maze[11, 8];
-            Tile two = gs.Maze[9, 10];
-            Tile three = gs.Maze[10, 10];
-            Tile four = gs.Maze[11, 10];
-            Tile pacman = gs.Maze[17, 10];
+            tile[0, 0] = new Wall(0, 0);
+            tile[0, 1] = new Wall(0, 1);
+            tile[0, 2] = new Wall(0, 2);
 
-            //assert
-            Assert.AreEqual(w, "w");
-            Assert.AreEqual(x, "x");
-            Assert.AreEqual(one, "1");
-            Assert.AreEqual(two, "2");
-            Assert.AreEqual(three, "3");
-            Assert.AreEqual(four, "4");
-            Assert.AreEqual(pacman, "P");
+            tile[1, 0] = new Wall(1, 0);
+            Energizer energizer = new Energizer(gs.Ghostpack);
+            Path energPath = new Path(1, 1, energizer);
+            tile[1, 1] = energPath;
+            tile[1, 2] = new Wall(1, 2);
+
+            tile[2, 0] = new Wall(2, 0);          
+            tile[2, 1] = new Wall(2, 1);
+            tile[2, 2] = new Wall(2, 2);
+
+            m1.SetTiles(tile);
+
+
+            Maze m = gs.Maze;
+
+            Assert.AreSame(m1, m);
+
 
         }
+        /*
         [TestMethod]
         public void TestPellet(){
             //arrange 
@@ -52,7 +60,7 @@ namespace GameStateTest
 
             Assert.AreEqual(points, 100);
         }
-        /*
+        
         [TestMethod]
         public void TestScoreAndLives(){
              GameState gs = new GameState();

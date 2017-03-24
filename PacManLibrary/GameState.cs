@@ -121,8 +121,7 @@ namespace PacManLibrary
                             break;
                         case "P":
                             Path emptyPathPacMan= new Path(j, i);
-                            tile[j, i] = emptyPathPacMan;
-                            
+                            tile[j, i] = emptyPathPacMan;                    
                             gs.Pacman.PacManPosition = new Vector2(j, i);                       
                             break;              
                     }                

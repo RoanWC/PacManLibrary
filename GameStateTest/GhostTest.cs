@@ -81,7 +81,7 @@ namespace GameStateTest
             //assert
             Assert.AreEqual(ghost.gStates[GhostState.scared], ghost.CurrentState);
         }
-        [TestMethod]
+     /*   [TestMethod]
         public void testCollision()
         {
             //arange
@@ -94,7 +94,7 @@ namespace GameStateTest
             ghost.CheckCollision();
 
 
-        }
+        }*/
 
         
         [TestMethod]
