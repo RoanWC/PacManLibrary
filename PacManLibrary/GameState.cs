@@ -37,12 +37,12 @@ namespace PacManLibrary
             gs.Pacman = new Pacman(gs);
 
             string[] read = File.ReadAllLines(filecontent);
-            Tile[,] tile = new Tile[read.GetLength(0), read.GetLength(1)];
+            Tile[,] tile = new Tile[read.Length, read.Length];
            
-            for (int i = 0; i < read.GetLength(0); i++)
+            for (int i = 0; i < read.Length; i++)
             {  
                 string[] seperate = read[i].Split(',');
-                for (int j = 0; j < read.GetLength(0); j++) {
+                for (int j = 0; j < read.Length; j++) {
                     switch (seperate[i])
                     {
                         case "w":
@@ -78,6 +78,7 @@ namespace PacManLibrary
                             blinky.Collision += gs.ScoreAndLives.incrementScore;
                             blinky.PacManDies += gs.ScoreAndLives.deadPacman;               
                             gs.Ghostpack.Add(blinky);
+                            gs.Ghostpack.ResetLocation = new Vector2(j, i);
                             Path emptyPathGhostBlinky = new Path(j, i);
                             tile[j, i] = emptyPathGhostBlinky;
                             break;                    
@@ -127,6 +128,7 @@ namespace PacManLibrary
                     }                
                 }    
             }
+            gs.Ghostpack.setReleaseLocation();
             gs.Maze.SetTiles(tile);
             return gs;
         }
