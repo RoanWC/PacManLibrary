@@ -48,7 +48,8 @@ namespace PacManLibrary
         {
             foreach (Ghost g in ghosts)
             {
-                g.Reset();
+                if(g.CurrentState != g.gStates[GhostState.penned])
+                    g.Reset();
             }
         }
         /// <summary>
