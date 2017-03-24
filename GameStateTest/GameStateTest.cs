@@ -1,6 +1,7 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using PacManLibrary;
+using Microsoft.Xna.Framework;
 //using System.IO;
 
 namespace GameStateTest
@@ -14,46 +15,32 @@ namespace GameStateTest
             //arrange 
            GameState gs = new GameState();
         
-            gs = GameState.Parse("test.txt");
-         //   string[] read = File.ReadAllLines("test.txt");
-         //   Console.WriteLine(read.GetLength(0));
-            Tile[,] tile = new Tile[3, 3];
-       
-            //Wall w = new Wall(8, 0);
-         /*
-            Maze m1 = new Maze();
-            // act
-            tile[0, 0] = new Wall(0, 0);
-            tile[0, 1] = new Wall(0, 1);
-            tile[0, 2] = new Wall(0, 2);
-
-          
-            tile[1, 0] = new Wall(1, 0);
-            Energizer energizer = new Energizer(gs.Ghostpack);
-             Path energPath = new Path(1, 1, energizer);
-            tile[1, 1] = energPath;
-            tile[1, 2] = new Wall(1, 2);
-
-            tile[2, 0] = new Wall(2, 0);          
-            tile[2, 1] = new Wall(2, 1);
-            tile[2, 2] = new Wall(2, 2);
-
-            m1.SetTiles(tile);
-            */
+            gs = GameState.Parse("levels.txt");
             Maze m = gs.Maze;
-            Console.WriteLine(m[2, 2].Member());
+
+            // use to make sure pacman is in the right position
+            Vector2 expectedPacmanPosition = new Vector2(11, 17);
+            Vector2 actualPacmanPosition = new Vector2(gs.Pacman.PacManPosition.X, gs.Pacman.PacManPosition.Y);
+
 
             // assert
-            Assert.IsTrue(m[0, 0] is Wall);
-            Assert.IsTrue(m[1, 1] is Path);
-            Assert.IsTrue(m[1, 1].Member() is Energizer);
-            Assert.IsTrue(m[2, 2].Member() == null);
-            //Assert.IsTrue(m[2, 3].IsEmpty());
-            // Assert.AreSame(m1[0,0].GetType(), m[0,0].GetType());
-            // Assert.AreSame(m1[1, 1].GetType(), m[1, 1].GetType());
-
-
-
+            Assert.IsTrue(m[2, 0] is Wall);
+            Assert.IsTrue(m[3, 1] is Path);
+            Assert.IsTrue(m[21, 17].Member() is Energizer);
+            Assert.IsTrue(m[9, 10].IsEmpty());
+            Assert.IsFalse(m[1, 2].Member() is Energizer);
+            Assert.IsTrue(m[9, 10] is Path);
+            //ghost 1
+            Assert.IsTrue(m[11, 8] is Path);
+            // ghost 2
+            Assert.IsTrue(m[10, 10] is Path);
+            //ghost 3
+            Assert.IsTrue(m[11, 10] is Path);
+            // ghost 4
+            Assert.IsTrue(m[12, 10] is Path);
+            // PacMan
+            Assert.IsTrue(m[11, 17] is Path);
+            Assert.AreEqual(expectedPacmanPosition, actualPacmanPosition);
         }
         
         [TestMethod]
@@ -74,24 +61,39 @@ namespace GameStateTest
 
             Assert.AreEqual(points, 100);
         }
-        /*
+        
         [TestMethod]
         public void TestScoreAndLives(){
-             GameState gs = new GameState();
+
+            GameState gs = new GameState();
             gs = GameState.Parse("levels.txt");
             ScoreAndLives sc = new ScoreAndLives(gs);
-            Pellet p = new Pellet();           
+            string dead = "";
+            GhostPack ghosts = new GhostPack();
+         
+            Pellet p = new Pellet();
+            Energizer e = new Energizer(ghosts);
 
-            // make pacman die and check life
-            gs.Pacman.PacManDies();
+            sc.GameOver += delegate () { dead = "dead"; };
+                     
             // make pacman collide and check points
             sc.incrementScore(p);
+  
+            Assert.AreEqual(sc.Score, 10);
+            sc.incrementScore(e);
+            Assert.AreEqual(sc.Score, 110);
 
-            int lives = sc.Lives;
-            int score = sc.Score;
-            
-            Assert.AreEqual(score, 10);
-
-        }*/
+            // before pacman's death
+            Assert.AreEqual(sc.Lives, 3);
+            sc.deadPacman();
+            // after 1st pacman's death
+            Assert.AreEqual(sc.Lives, 2);
+            // pacman's second death
+            sc.deadPacman();
+            Assert.AreEqual(sc.Lives, 1);
+            // event should fire after the last life gets lost
+            sc.deadPacman();
+            Assert.AreEqual(dead, "dead");
+        }
     }
 }
