@@ -28,6 +28,8 @@ namespace GameStateTest
         {
             //arange
             GameState gs = new GameState();
+            gs = GameState.Parse("levels.txt");
+
             Vector2 target = new Vector2(2, 2);
             Ghost ghost = gs.Ghostpack.Ghosts[1];
 
@@ -35,7 +37,7 @@ namespace GameStateTest
             ghost.ChangeState(GhostState.released);
 
             //assert
-            Assert.AreEqual(ghost.gStates[GhostState.chase], ghost.CurrentState);
+            Assert.IsTrue(ghost.CurrentState is Chase);
         }
 
         [TestMethod]
@@ -43,6 +45,8 @@ namespace GameStateTest
         {
             //arange
             GameState gs = new GameState();
+            gs = GameState.Parse("levels.txt");
+
             Vector2 target = new Vector2(2, 2);
             Ghost ghost = gs.Ghostpack.Ghosts[1];
 
@@ -50,13 +54,15 @@ namespace GameStateTest
             ghost.ChangeState(GhostState.penned);
 
             //assert
-            Assert.AreEqual(ghost.gStates[GhostState.penned], ghost.CurrentState);
+            Assert.IsTrue(ghost.CurrentState is Penned);
         }
         [TestMethod]
         public void testChangeStateChase()
         {
             //arange
             GameState gs = new GameState();
+            gs = GameState.Parse("levels.txt");
+
             Vector2 target = new Vector2(2, 2);
             Ghost ghost = gs.Ghostpack.Ghosts[1];
 
@@ -64,7 +70,7 @@ namespace GameStateTest
             ghost.ChangeState(GhostState.chase);
 
             //assert
-            Assert.AreEqual(ghost.gStates[GhostState.chase], ghost.CurrentState);
+            Assert.IsTrue(ghost.CurrentState is Chase);
         }
 
         [TestMethod]
@@ -72,6 +78,7 @@ namespace GameStateTest
         {
             //arange
             GameState gs = new GameState();
+            gs = GameState.Parse("levels.txt");
             Vector2 target = new Vector2(2, 2);
             Ghost ghost = gs.Ghostpack.Ghosts[1];
 
@@ -79,22 +86,23 @@ namespace GameStateTest
             ghost.ChangeState(GhostState.scared);
 
             //assert
-            Assert.AreEqual(ghost.gStates[GhostState.scared], ghost.CurrentState);
+            Assert.IsTrue(ghost.CurrentState is Scared);
         }
-     /*   [TestMethod]
+       [TestMethod]
         public void testCollision()
         {
             //arange
             GameState gs = new GameState();
             Ghost ghost = gs.Ghostpack.Ghosts[1];
             bool eventThrown = false;
-            ghost.Collision +={ eventThrown = true };
+            ghost.Collision += (obj) => { eventThrown = true; };
             //act
             gs.Pacman.PacManPosition = ghost.Position;
             ghost.CheckCollision();
+            //assert
+            Assert.IsTrue(eventThrown);
 
-
-        }*/
+        }
 
         
         [TestMethod]
