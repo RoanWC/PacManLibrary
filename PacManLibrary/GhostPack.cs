@@ -22,6 +22,11 @@ namespace PacManLibrary
             get { return ghosts; }
             set { ghosts = value; }
         }
+        public Vector2 ResetLocation
+        {
+            get;
+            set;
+        }
         /// <summary>
         /// Constructor to initialize the ghostList
         /// </summary>
@@ -91,6 +96,13 @@ namespace PacManLibrary
         IEnumerator IEnumerable.GetEnumerator()
         {
             return ghosts.GetEnumerator();
+        }
+        public void setReleaseLocation()
+        {
+            foreach(Ghost g in ghosts)
+            {
+                g.ResetLocation = ResetLocation;
+            }
         }
     }
 }

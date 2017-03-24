@@ -29,6 +29,7 @@ namespace PacManLibrary
         public Direction Direction { get; set; }
         public IGhostState CurrentState { get; set; }
         public Color Color { get; set; }
+        public Vector2 ResetLocation{get;set;}
 
         public int Points
         {
@@ -63,14 +64,12 @@ namespace PacManLibrary
         /// <param name="color">colour that the ghost will be painted</param>
         public Ghost(GameState g, int x, int y, Vector2 target, GhostState state, Color color)
         {
-            resetLocation = g.Maze[x, y].Position;
             CreateStates();
             this.pacman = g.Pacman;
             Position = new Vector2(x, y);
             this.target = target;
             ChangeState(state);
             Color = color;
-
         }
         /// <summary>
         /// Changes the ghosts current state
