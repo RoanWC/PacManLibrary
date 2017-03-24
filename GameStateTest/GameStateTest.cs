@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using PacManLibrary;
-
+//using System.IO;
 
 namespace GameStateTest
 {
@@ -13,18 +13,24 @@ namespace GameStateTest
         {
             //arrange 
            GameState gs = new GameState();
+        
             gs = GameState.Parse("test.txt");
+         //   string[] read = File.ReadAllLines("test.txt");
+         //   Console.WriteLine(read.GetLength(0));
             Tile[,] tile = new Tile[3, 3];
-            Wall w = new Wall(8, 0);
+       
+            //Wall w = new Wall(8, 0);
+         
             Maze m1 = new Maze();
-
+           
             tile[0, 0] = new Wall(0, 0);
             tile[0, 1] = new Wall(0, 1);
             tile[0, 2] = new Wall(0, 2);
 
+          
             tile[1, 0] = new Wall(1, 0);
             Energizer energizer = new Energizer(gs.Ghostpack);
-            Path energPath = new Path(1, 1, energizer);
+             Path energPath = new Path(1, 1, energizer);
             tile[1, 1] = energPath;
             tile[1, 2] = new Wall(1, 2);
 
@@ -36,9 +42,10 @@ namespace GameStateTest
 
 
             Maze m = gs.Maze;
-
-            Assert.AreSame(m1, m);
-
+            Tile w = m[0, 0];
+   
+            Assert.AreSame(m1[0,0].GetType(), w.GetType());
+         
 
         }
         /*

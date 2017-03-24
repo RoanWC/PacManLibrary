@@ -176,6 +176,6 @@ namespace PacManLibrary
         {
             get;
             private set;
-        }
+        }     
     }
 }
