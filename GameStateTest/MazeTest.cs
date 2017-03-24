@@ -78,25 +78,29 @@ namespace GameStateTest
             GameState game1Pellet = new GameState();
             //This url is a very small csv file that is 2 by 2 that contains 1 pellet
             //had issues with getting it as a reference
-            game1Pellet = GameState.Parse(@"H:\levelsPen0Pellet.txt");
+            game1Pellet = GameState.Parse("3by3_1pellet.txt");
 
-            GameState gameAllWalls = new GameState();
+            //GameState gameEmptyPaths = new GameState();
             //This url is a very small csv file that is 2 by 2 that contains 0 collidable members
             //had issues with getting it as a reference
-            gameAllWalls = GameState.Parse(@"H:\levelsPen0Pellet.txt");
+           // gameEmptyPaths = GameState.Parse("3by3emptyPaths.txt");
 
             //act
             Maze maze1Pel = game1Pellet.Maze;
-            Maze maze0Pel = gameAllWalls.Maze;
+            //Maze maze0Pel = gameEmptyPaths.Maze;
+            
+            //var wasFired0 = false;
             var wasFired1 = false;
-            var wasFired0 = false;
 
-            maze0Pel.PacmanWon += delegate () { wasFired0 = true; };
+           // maze0Pel.PacmanWon += delegate () { wasFired0 = true; };
             maze1Pel.PacmanWon += delegate () { wasFired1 = true; };
 
+            maze1Pel.CheckMembersLeft();
+            //maze0Pel.CheckMembersLeft();
+
             //assert
-            Assert.IsTrue(wasFired0);
             Assert.IsFalse(wasFired1);
+            //Assert.IsTrue(wasFired0);
         }
     }
 }

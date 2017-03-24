@@ -130,11 +130,12 @@ namespace PacManLibrary
         public void CheckMembersLeft()
         {
             bool left = true;
-            foreach(Path tile in maze)
+            foreach (Path tile in maze)
             {
-                if(!(tile.IsEmpty()))
-                    left = false;
-                    break;
+                if (!(tile.IsEmpty())) { 
+                left = false;
+                break;
+                }
             }
             if(left)
                 PacmanWon?.Invoke();
