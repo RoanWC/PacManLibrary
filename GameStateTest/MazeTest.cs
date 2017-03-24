@@ -36,14 +36,14 @@ namespace GameStateTest
         {
             //act
             GameState gs = new GameState();
-            gs = GameState.Parse(@"H:\levels.txt");
+            gs = GameState.Parse("levels.txt");
             Pellet pellet = new Pellet();
 
             //arrange
-            Maze maze = gs.Maze;
+           
 
             //assert
-            Assert.AreEqual(maze[1, 1].Member().GetType(),pellet);
+            Assert.AreEqual(gs.Maze[1, 1].Member().GetType(),pellet.GetType());
         }
 
         /// <summary>
