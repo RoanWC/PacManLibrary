@@ -45,13 +45,13 @@ namespace PacManLibrary
             int numPosible = places.Count;
             int i = 0;
             int choice = 0;
-            float dist = places[i].GetDistance(target);
+            float dist = places[i].GetDistance(pacman.PacManPosition + target);
 
             for (i = 0; i < numPosible; i++)
             {
-                if (places[i].GetDistance(target) < dist)
+                if (places[i].GetDistance(pacman.PacManPosition + target) < dist)
                 {
-                    dist = places[i].GetDistance(target);
+                    dist = places[i].GetDistance(pacman.PacManPosition + target);
                     choice = i;
                 }
             }
