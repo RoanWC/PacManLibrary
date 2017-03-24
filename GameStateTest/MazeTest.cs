@@ -17,14 +17,14 @@ namespace GameStateTest
         {
             //arrange
             GameState gs = new GameState();
-            gs = GameState.Parse(@"H:\levels.csv");
+            gs = GameState.Parse("test.txt");
             
 
             //act
             Maze maze = gs.Maze;
 
             //assert
-            Assert.AreEqual(maze.Size, 23);
+            Assert.AreEqual(maze.Size, 3);
         }
 
         /// <summary>
