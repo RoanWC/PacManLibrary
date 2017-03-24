@@ -37,12 +37,12 @@ namespace PacManLibrary
             gs.Pacman = new Pacman(gs);
 
             string[] read = File.ReadAllLines(filecontent);
-            Tile[,] tile = new Tile[read.Length, read.Length];
+            Tile[,] tile = new Tile[read.GetLength(0), read.GetLength(1)];
            
-            for (int i = 0; i < read.Length; i++)
+            for (int i = 0; i < read.GetLength(0); i++)
             {  
                 string[] seperate = read[i].Split(',');
-                for (int j = 0; j < read.Length; j++) {
+                for (int j = 0; j < read.GetLength(0); j++) {
                     switch (seperate[i])
                     {
                         case "w":
