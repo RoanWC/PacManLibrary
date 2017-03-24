@@ -93,7 +93,11 @@ namespace GameStateTest
         {
             //arange
             GameState gs = new GameState();
+            gs = GameState.Parse("levels.txt");
+
             Ghost ghost = gs.Ghostpack.Ghosts[1];
+            ghost.ChangeState(GhostState.chase);
+
             bool eventThrown = false;
             ghost.Collision += (obj) => { eventThrown = true; };
             //act
