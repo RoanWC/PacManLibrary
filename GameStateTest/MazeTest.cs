@@ -58,17 +58,17 @@ namespace GameStateTest
         {
             //arrange
             GameState gs = new GameState();
-            gs = GameState.Parse(@"H:\levels.txt");
+            gs = GameState.Parse("levels.txt");
             //3 , 3 direction Up
             
             //act
-            Maze maze = gs.Maze;
-            List<Tile> list1 = maze.GetAvailableNeighbours(new Vector2(3, 3), Direction.Right);//should only be 1 available neighbours
-            List<Tile> list2 = maze.GetAvailableNeighbours(new Vector2(3, 3), Direction.Up);//should only be 2 available neighbours
+            
+            List<Tile> list1 = gs.Maze.GetAvailableNeighbours(new Vector2(1, 1), Direction.Right);//should only be 2 available neighbours
+            List<Tile> list2 = gs.Maze.GetAvailableNeighbours(new Vector2(1, 1), Direction.Up);//should only be 1 available neighbours
 
             //assert
-            Assert.AreEqual(1, list1.Count);
-            Assert.AreEqual(2, list2.Count);
+            Assert.AreEqual(2, list1.Count);
+            Assert.AreEqual(1, list2.Count);
         }
 
         [TestMethod]

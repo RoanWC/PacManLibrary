@@ -43,7 +43,7 @@ namespace PacManLibrary
             {  
                 string[] seperate = read[i].Split(',');
                 for (int j = 0; j < read.Length; j++) {
-                    switch (seperate[i])
+                    switch (seperate[j])
                     {
                         case "w":
                             Wall wall = new Wall(j, i);
