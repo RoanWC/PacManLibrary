@@ -22,6 +22,8 @@ namespace GameStateTest
             Vector2 expectedPacmanPosition = new Vector2(11, 17);
             Vector2 actualPacmanPosition = new Vector2(gs.Pacman.PacManPosition.X, gs.Pacman.PacManPosition.Y);
 
+            Console.WriteLine(m[2, 0].GetType());
+            Console.WriteLine(m[9, 10].Member());
 
             // assert
             Assert.IsTrue(m[2, 0] is Wall);
