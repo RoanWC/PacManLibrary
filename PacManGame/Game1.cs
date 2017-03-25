@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
@@ -12,7 +12,9 @@ namespace PacManGame
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
 
-        MazeSprite mazeSprite;
+       private MazeSprite mazeSprite;
+       private PacmanSprite pacmanSprite;
+
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
@@ -29,7 +31,9 @@ namespace PacManGame
         {
             // TODO: Add your initialization logic here
             mazeSprite = new MazeSprite(this);
+            pacmanSprite = new PacmanSprite(this);
             Components.Add(mazeSprite);
+            Components.Add(pacmanSprite);
             base.Initialize();
         }
 
