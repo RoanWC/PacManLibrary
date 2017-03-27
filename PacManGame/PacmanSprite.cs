@@ -122,6 +122,9 @@ namespace PacManGame
         public override void Draw(GameTime gameTime)
         {
             spriteBatch.Begin();
+            GameState gs = new GameState();
+            gs = GameState.Parse("levels.txt");
+
             spriteBatch.Draw(imagePacman, new Rectangle((int)pacman.PacManPosition.X * 32, (int)pacman.PacManPosition.Y * 32, 32, 32), Color.White);
             spriteBatch.End();
             base.Draw(gameTime);
