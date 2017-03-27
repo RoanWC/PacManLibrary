@@ -20,6 +20,8 @@ namespace PacManGame
         private Texture2D imagePacman;
         private Game1 game;
 
+
+
         // keyboard input 
         private KeyboardState oldState;
         private int counter;
@@ -29,6 +31,8 @@ namespace PacManGame
         {
             this.game = game;
             this.gs = gs;
+            counter = 0;
+            threshold = 5;
         }
         public override void Initialize()
         {
@@ -44,8 +48,13 @@ namespace PacManGame
         }
         public override void Update(GameTime gameTime)
         {
-            checkInput();
-            base.Update(gameTime);
+            counter++;
+            if (threshold == counter)
+            {
+                checkInput();
+                base.Update(gameTime);
+                counter = 0;
+            }
         }
 
         private void checkInput()

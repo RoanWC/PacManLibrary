@@ -19,6 +19,7 @@ namespace PacManLibrary
         private Maze maze;
         private Vector2 position;
 
+
         /// <summary>
         /// This constructor gets passed to it a gamestate and initializes all 
         /// the private fields.
