@@ -80,7 +80,7 @@ namespace PacManLibrary
             
             if (state == GhostState.released)
             {
-                Position = resetLocation;
+                Position = ResetLocation;
                 CurrentState =  gStates[GhostState.chase];
             }
             else
