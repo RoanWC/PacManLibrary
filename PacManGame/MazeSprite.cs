@@ -17,6 +17,7 @@ namespace PacManGame
     class MazeSprite : DrawableGameComponent
     {
         private Maze maze;
+        private GameState gs;
         // to render
         private SpriteBatch spriteBatch;
         private Texture2D imageEmpty;
@@ -28,9 +29,11 @@ namespace PacManGame
         private Game1 game;
 
 
-        public MazeSprite(Game1 game) : base(game)
+        public MazeSprite(Game1 game, GameState gs) : base(game)
         {
             this.game = game;
+            this.gs = gs;
+    
         }
 
         public override void Initialize()
@@ -52,15 +55,12 @@ namespace PacManGame
         }
         public override void Update(GameTime gameTime)
         {
+            gs.Pacman.CheckCollisions();
             base.Update(gameTime);
         }
         public override void Draw(GameTime gameTime)
         {
             spriteBatch.Begin();
-
-            GameState gs = new GameState();
-            gs = GameState.Parse("levels.txt");
-
 
             for (int i = 0; i < gs.Maze.Size; i++)
             {

@@ -1,6 +1,7 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using PacManLibrary;
 
 namespace PacManGame
 {
@@ -14,6 +15,7 @@ namespace PacManGame
 
        private MazeSprite mazeSprite;
        private PacmanSprite pacmanSprite;
+        private GameState gs;
 
         public Game1()
         {
@@ -30,8 +32,11 @@ namespace PacManGame
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
-            mazeSprite = new MazeSprite(this);
-            pacmanSprite = new PacmanSprite(this);
+            gs = new GameState();
+            gs = GameState.Parse("levels.txt");
+
+            mazeSprite = new MazeSprite(this, gs);
+            pacmanSprite = new PacmanSprite(this, gs);
             Components.Add(mazeSprite);
             Components.Add(pacmanSprite);
             base.Initialize();

@@ -48,8 +48,11 @@ namespace PacManLibrary
         /// </summary>
         public override void Collide()
         {
-            member.Collide();
-            this.member = null;
+            if (!this.IsEmpty())
+            {
+                member.Collide();
+                this.member = null;
+            }
 
         }
 
@@ -61,9 +64,7 @@ namespace PacManLibrary
         /// <returns>bool</returns>
         public override bool IsEmpty()
         {
-            if(member is Pellet || member is Energizer)
-                return false;
-            return true;
+            return member == null;
         }
 
         /// <summary>

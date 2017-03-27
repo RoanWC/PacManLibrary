@@ -46,29 +46,36 @@ namespace PacManLibrary
                 switch (dir)
                 {
                     case Direction.Up:
-                        if (availableTiles.Contains(maze[x, y - 1]))                       
-                            PacManPosition = new Vector2(x, y - 1);
-                    CheckCollisions();
+                    if (availableTiles.Contains(maze[x, y - 1]))
+                    {
+                        PacManPosition = new Vector2(x, y - 1);
+                        CheckCollisions();
+                    }
                         break;
 
                     case Direction.Down:
-                        if (availableTiles.Contains(maze[x, y + 1]))
-                            PacManPosition = new Vector2(x, y + 1);
-                    CheckCollisions();
+                    if (availableTiles.Contains(maze[x, y + 1])) {
+                        PacManPosition = new Vector2(x, y + 1);
+                        CheckCollisions();
+                        }
                         break;
 
                     case Direction.Left:
-                        if (availableTiles.Contains(maze[x - 1, y]))
-                            PacManPosition = new Vector2(x - 1, y);
-                    CheckCollisions();
-                    break;
+                    if (availableTiles.Contains(maze[x - 1, y]))
+                    {
+                        PacManPosition = new Vector2(x - 1, y);
+                        CheckCollisions();
+                    }
+                        break;
 
                    case Direction.Right:
-                        if (availableTiles.Contains(maze[x + 1, y]))                      
-                            PacManPosition = new Vector2(x + 1, y);
-                    CheckCollisions();
-                    break;            
-            }
+                    if (availableTiles.Contains(maze[x + 1, y]))
+                    {
+                        PacManPosition = new Vector2(x + 1, y);
+                        CheckCollisions();
+                    }
+                        break;            
+            }   
         }
          /// <summary>
         /// Property which returns or sets a Vector2 of pacman's position.
@@ -84,14 +91,17 @@ namespace PacManLibrary
         /// </summary>
         public void CheckCollisions()
         {
-            if (!(maze[(int)position.X, (int)position.Y].IsEmpty()))
-                maze[(int)position.X, (int)position.Y].Collide();
-            // check collisions for pellet or energizer
-            foreach(Ghost ghost in ghosts)
+            if (!(maze[(int)PacManPosition.X, (int)PacManPosition.Y].IsEmpty()))
             {
-                ghost.CheckCollision();
+                maze[(int)PacManPosition.X, (int)PacManPosition.Y].Collide();
             }
-            
+            // check collisions for pellet or energizer
+
+            // foreach(Ghost ghost in ghosts)
+            //   {
+            //      ghost.CheckCollision();
+            //  }
+
         }       
     }
 }

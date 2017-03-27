@@ -25,14 +25,10 @@ namespace PacManGame
         private int counter;
         private int threshold;
 
-        public PacmanSprite(Game1 game) : base(game)
+        public PacmanSprite(Game1 game, GameState gs) : base(game)
         {
             this.game = game;
-            GameState gs = new GameState();
-            gs = GameState.Parse("levels.txt");
-
             this.gs = gs;
-
         }
         public override void Initialize()
         {
