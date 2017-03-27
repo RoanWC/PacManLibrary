@@ -19,15 +19,23 @@ namespace PacManGame
         private SpriteBatch spriteBatch;
         private SpriteFont font;
         private Game1 game;
-        public ScoreSprite(Game1 game)
+        private GameState gs;
+        public ScoreSprite(Game1 game, GameState gs)
             : base(game)
         {
             this.game = game;
+            this.gs = gs;
         }
 
         public override void Initialize()
         {
             base.Initialize();
+            gs.ScoreAndLives.GameOver += gameEnded;
+        }
+
+        private void gameEnded()
+        {
+            Console.WriteLine("You dead!");
         }
 
         protected override void LoadContent()
@@ -46,7 +54,7 @@ namespace PacManGame
         public override void Draw(GameTime gameTime)
         {
             spriteBatch.Begin();
-            spriteBatch.DrawString(font, "Your score is: " + score, new Vector2(0, 0), Color.White);
+            spriteBatch.DrawString(font, "Your score is: " + gs.ScoreAndLives.Score, new Vector2(0, 0), Color.White);
             spriteBatch.End();
 
             base.Draw(gameTime);

@@ -18,6 +18,7 @@ namespace PacManLibrary
         private int lives;
         private int score;
         public event DeadPacManHandler GameOver;
+        
         /// <summary>
         /// This constructor gets passed to it a gamestate and uses it
         /// to initialize its private fields. 
