@@ -105,8 +105,8 @@ namespace PacManLibrary
             foreach(Ghost ghost in ghosts)
                {
                  ghost.CheckCollision();
+             
                }
-
         }       
     }
 }

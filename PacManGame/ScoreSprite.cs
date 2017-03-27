@@ -42,7 +42,6 @@ namespace PacManGame
             spriteBatch = new SpriteBatch(GraphicsDevice);
             font = game.Content.Load<SpriteFont>("scoreFont");//I dont know where this scorefont comes from
             base.LoadContent();
-            //gs.ScoreAndLives.Score += incrementScore; SKIPPED
         }
 
         public override void Update(GameTime gameTime)

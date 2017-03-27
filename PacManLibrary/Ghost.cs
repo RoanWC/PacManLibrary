@@ -17,7 +17,7 @@ namespace PacManLibrary
         //field declarations
         private Pacman pacman;
         private Vector2 target;
-        private Pen pen;
+        private Pen pen = new Pen();
         private Maze maze;
         private Timer scared;
         public Dictionary<GhostState, IGhostState> gStates = new Dictionary<GhostState, IGhostState>(3);
@@ -104,6 +104,7 @@ namespace PacManLibrary
             if(pacman.PacManPosition == Position)
             {
                 Collide();
+               // Reset();
             }
         }
         
