@@ -15,7 +15,6 @@ namespace PacManGame
 {
     class ScoreSprite : DrawableGameComponent
     {
-        private ScoreAndLives score;
         private SpriteBatch spriteBatch;
         private SpriteFont font;
         private Game1 game;
@@ -43,7 +42,7 @@ namespace PacManGame
             spriteBatch = new SpriteBatch(GraphicsDevice);
             font = game.Content.Load<SpriteFont>("scoreFont");//I dont know where this scorefont comes from
             base.LoadContent();
-
+            //gs.ScoreAndLives.Score += incrementScore; SKIPPED
         }
 
         public override void Update(GameTime gameTime)
@@ -55,6 +54,7 @@ namespace PacManGame
         {
             spriteBatch.Begin();
             spriteBatch.DrawString(font, "Your score is: " + gs.ScoreAndLives.Score, new Vector2(0, 0), Color.White);
+            spriteBatch.DrawString(font, "\nYou have : " + gs.ScoreAndLives.Lives+" Lives", new Vector2(0, 0), Color.White);
             spriteBatch.End();
 
             base.Draw(gameTime);

@@ -17,8 +17,9 @@ namespace PacManGame
        private PacmanSprite pacmanSprite;
         private GhostsSprite ghostsSprite;
         private GameState gs;
+        private ScoreSprite scoreSprite;
 
- 
+
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
@@ -41,9 +42,11 @@ namespace PacManGame
             mazeSprite = new MazeSprite(this, gs);
             pacmanSprite = new PacmanSprite(this, gs);
             ghostsSprite = new GhostsSprite(this, gs);
+            scoreSprite = new ScoreSprite(this, gs);
             Components.Add(mazeSprite);
             Components.Add(pacmanSprite);
             Components.Add(ghostsSprite);
+            Components.Add(scoreSprite);
             base.Initialize();
         }
 
@@ -56,7 +59,7 @@ namespace PacManGame
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
-            // TODO: use this.Content to load your game content here
+            
         }
 
         /// <summary>
@@ -99,6 +102,11 @@ namespace PacManGame
 
             base.Draw(gameTime);
         }
+        private void gameEnded()
+        {
+            Components.Remove(pacmanSprite); //the ball won’t be updated or drawn any more
+        }
+
 
     }
 }

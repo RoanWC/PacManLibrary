@@ -85,3 +85,9 @@
 /processorParam:TextureFormat=Color
 /build:wall.png
 
+#begin scoreFont.spritefont
+/importer:FontDescriptionImporter
+/processor:FontDescriptionProcessor
+/processorParam:TextureFormat=Compressed
+/build:scoreFont.spritefont
+
