@@ -98,10 +98,10 @@ namespace PacManLibrary
             }
             // check collisions for pellet or energizer
 
-            // foreach(Ghost ghost in ghosts)
-            //   {
-            //      ghost.CheckCollision();
-            //  }
+            foreach(Ghost ghost in ghosts)
+               {
+                 ghost.CheckCollision();
+               }
 
         }       
     }

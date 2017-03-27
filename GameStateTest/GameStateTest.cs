@@ -70,14 +70,13 @@ namespace GameStateTest
             GameState gs = new GameState();
             gs = GameState.Parse("levels.txt");
             ScoreAndLives sc = new ScoreAndLives(gs);
-            string dead = "";
+            bool dead = false;
             GhostPack ghosts = new GhostPack();
          
             Pellet p = new Pellet();
             Energizer e = new Energizer(ghosts);
 
-            sc.GameOver += delegate () { dead = "dead"; };
-                     
+            sc.GameOver += delegate () { dead = true; };
             // make pacman collide and check points
             sc.incrementScore(p);
   
@@ -90,12 +89,15 @@ namespace GameStateTest
             sc.deadPacman();
             // after 1st pacman's death
             Assert.AreEqual(sc.Lives, 2);
+            // pacman still has one life
+            Assert.IsFalse(dead);
             // pacman's second death
             sc.deadPacman();
             Assert.AreEqual(sc.Lives, 1);
             // event should fire after the last life gets lost
             sc.deadPacman();
-            Assert.AreEqual(dead, "dead");
+            Assert.IsTrue(dead);
+          
         }
     }
 }
