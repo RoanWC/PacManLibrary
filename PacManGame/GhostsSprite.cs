@@ -25,7 +25,6 @@ namespace PacManGame
         public GhostsSprite(Game1 game,GameState gs)
             : base(game)
         {
-            // TODO: Construct any child components here
             this.game = game;
             this.gs = gs;
         }
