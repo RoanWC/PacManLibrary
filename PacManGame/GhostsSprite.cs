@@ -19,6 +19,8 @@ namespace PacManGame
         private SpriteBatch spriteBatch;
         private Texture2D ghostImage;
         private Game1 game;
+        int moveCounter = 0;
+        int framesDesired = 15;
 
         public GhostsSprite(Game1 game,GameState gs)
             : base(game)
@@ -41,7 +43,13 @@ namespace PacManGame
 
         public override void Update(GameTime gameTime)
         {
-            //gs.Ghostpack.Move();
+            moveCounter++;
+            if(moveCounter == framesDesired)
+            {
+                gs.Ghostpack.Move();
+                moveCounter = 0;
+            }
+
             base.Update(gameTime);
         }
 

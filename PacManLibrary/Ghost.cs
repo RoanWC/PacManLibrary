@@ -64,8 +64,9 @@ namespace PacManLibrary
         /// <param name="color">colour that the ghost will be painted</param>
         public Ghost(GameState g, int x, int y, Vector2 target, GhostState state, Color color)
         {
-            CreateStates();
+            maze = g.Maze;
             this.pacman = g.Pacman;
+            CreateStates();
             Position = new Vector2(x, y);
             this.target = target;
             ChangeState(state);
