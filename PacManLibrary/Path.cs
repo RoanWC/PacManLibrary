@@ -49,6 +49,7 @@ namespace PacManLibrary
         public override void Collide()
         {
             member.Collide();
+            this.member = null;
 
         }
 

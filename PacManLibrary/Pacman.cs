@@ -48,26 +48,26 @@ namespace PacManLibrary
                     case Direction.Up:
                         if (availableTiles.Contains(maze[x, y - 1]))                       
                             PacManPosition = new Vector2(x, y - 1);
-                        
+                    CheckCollisions();
                         break;
 
                     case Direction.Down:
                         if (availableTiles.Contains(maze[x, y + 1]))
                             PacManPosition = new Vector2(x, y + 1);
-                        
+                    CheckCollisions();
                         break;
 
                     case Direction.Left:
                         if (availableTiles.Contains(maze[x - 1, y]))
                             PacManPosition = new Vector2(x - 1, y);
-                        
-                        break;
+                    CheckCollisions();
+                    break;
 
                    case Direction.Right:
                         if (availableTiles.Contains(maze[x + 1, y]))                      
                             PacManPosition = new Vector2(x + 1, y);
-                                           
-                        break;            
+                    CheckCollisions();
+                    break;            
             }
         }
          /// <summary>
@@ -86,7 +86,7 @@ namespace PacManLibrary
         {
             if (!(maze[(int)position.X, (int)position.Y].IsEmpty()))
                 maze[(int)position.X, (int)position.Y].Collide();
-
+            // check collisions for pellet or energizer
             foreach(Ghost ghost in ghosts)
             {
                 ghost.CheckCollision();
