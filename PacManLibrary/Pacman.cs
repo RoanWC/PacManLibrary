@@ -56,15 +56,15 @@ namespace PacManLibrary
                     case Direction.Down:
                     if (availableTiles.Contains(maze[x, y + 1])) {
                         PacManPosition = new Vector2(x, y + 1);
-                        CheckCollisions();
-                        }
+                        CheckCollisions();                      
+                    }
                         break;
 
                     case Direction.Left:
                     if (availableTiles.Contains(maze[x - 1, y]))
                     {
                         PacManPosition = new Vector2(x - 1, y);
-                        CheckCollisions();
+                        CheckCollisions();                       
                     }
                         break;
 
@@ -72,7 +72,7 @@ namespace PacManLibrary
                     if (availableTiles.Contains(maze[x + 1, y]))
                     {
                         PacManPosition = new Vector2(x + 1, y);
-                        CheckCollisions();
+                        CheckCollisions();                       
                     }
                         break;            
             }   

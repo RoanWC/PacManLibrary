@@ -15,10 +15,14 @@ namespace PacManGame
 {
     class ScoreSprite : DrawableGameComponent
     {
+        private ScoreAndLives score;
+        private SpriteBatch spriteBatch;
+        private SpriteFont font;
+        private Game1 game;
         public ScoreSprite(Game1 game)
             : base(game)
         {
-            // TODO: Construct any child components here
+            this.game = game;
         }
 
         public override void Initialize()
@@ -28,7 +32,10 @@ namespace PacManGame
 
         protected override void LoadContent()
         {
+            spriteBatch = new SpriteBatch(GraphicsDevice);
+            font = game.Content.Load<SpriteFont>("scoreFont");//I dont know where this scorefont comes from
             base.LoadContent();
+
         }
 
         public override void Update(GameTime gameTime)
@@ -38,6 +45,10 @@ namespace PacManGame
 
         public override void Draw(GameTime gameTime)
         {
+            spriteBatch.Begin();
+            spriteBatch.DrawString(font, "Your score is: " + score, new Vector2(0, 0), Color.White);
+            spriteBatch.End();
+
             base.Draw(gameTime);
         }
 
