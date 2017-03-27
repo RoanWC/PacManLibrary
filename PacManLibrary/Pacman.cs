@@ -50,6 +50,7 @@ namespace PacManLibrary
                     {
                         PacManPosition = new Vector2(x, y - 1);
                         CheckCollisions();
+                                              
                     }
                         break;
 
