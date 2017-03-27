@@ -15,10 +15,17 @@ namespace PacManGame
 {
     class GhostsSprite : DrawableGameComponent
     {
-        public GhostsSprite(Game1 game)
+        private GameState gs;
+        private SpriteBatch spriteBatch;
+        private Texture2D ghostImage;
+        private Game1 game;
+
+        public GhostsSprite(Game1 game,GameState gs)
             : base(game)
         {
             // TODO: Construct any child components here
+            this.game = game;
+            this.gs = gs;
         }
         public override void Initialize()
         {
@@ -27,16 +34,26 @@ namespace PacManGame
 
         protected override void LoadContent()
         {
+            spriteBatch = new SpriteBatch(GraphicsDevice);
+            ghostImage = game.Content.Load<Texture2D>("ghost");
             base.LoadContent();
         }
 
         public override void Update(GameTime gameTime)
         {
+            //gs.Ghostpack.Move();
             base.Update(gameTime);
         }
 
         public override void Draw(GameTime gameTime)
         {
+
+            foreach (Ghost g in gs.Ghostpack)
+            {
+                spriteBatch.Begin();
+                spriteBatch.Draw(ghostImage, new Rectangle((int)g.Position.X * 32, (int)g.Position.Y * 32, 32, 32), g.Color);
+                spriteBatch.End();
+            }
             base.Draw(gameTime);
         }
 

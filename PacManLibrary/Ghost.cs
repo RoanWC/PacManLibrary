@@ -77,9 +77,10 @@ namespace PacManLibrary
         /// <param name="state">ghostState enum to determine what state to change to</param>
         public void ChangeState(GhostState state)
         {
-            Position = resetLocation;
+            
             if (state == GhostState.released)
-            {                
+            {
+                Position = ResetLocation;
                 CurrentState =  gStates[GhostState.chase];
             }
             else

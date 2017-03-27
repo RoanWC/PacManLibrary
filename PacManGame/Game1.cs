@@ -15,8 +15,10 @@ namespace PacManGame
 
        private MazeSprite mazeSprite;
        private PacmanSprite pacmanSprite;
+        private GhostsSprite ghostsSprite;
         private GameState gs;
 
+ 
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
@@ -35,10 +37,13 @@ namespace PacManGame
             gs = new GameState();
             gs = GameState.Parse("levels.txt");
 
+
             mazeSprite = new MazeSprite(this, gs);
             pacmanSprite = new PacmanSprite(this, gs);
+            ghostsSprite = new GhostsSprite(this, gs);
             Components.Add(mazeSprite);
             Components.Add(pacmanSprite);
+            Components.Add(ghostsSprite);
             base.Initialize();
         }
 
