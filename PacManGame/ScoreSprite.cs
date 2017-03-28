@@ -20,6 +20,7 @@ namespace PacManGame
         private SpriteBatch spriteBatch;
         private SpriteFont font;
         private Texture2D imageGameOver;
+        private Texture2D imagePacmanWon;
         private Game1 game;
         private GameState gs;
         public ScoreSprite(Game1 game, GameState gs)
@@ -50,6 +51,7 @@ namespace PacManGame
         {
             spriteBatch = new SpriteBatch(GraphicsDevice);
             imageGameOver = game.Content.Load<Texture2D>("gameOver");
+            imagePacmanWon = game.Content.Load<Texture2D>("Winner");
             font = game.Content.Load<SpriteFont>("scoreFont");//I dont know where this scorefont comes from
             base.LoadContent();
         }
@@ -73,7 +75,8 @@ namespace PacManGame
             }
             if (pacmanWin)
             {
-                spriteBatch.DrawString(font, "You win ", new Vector2(50, 50), Color.White);
+                //spriteBatch.DrawString(font, "You win ", new Vector2(50, 50), Color.White);
+                spriteBatch.Draw(imagePacmanWon, new Vector2(0, 0), Color.White);
             }
             spriteBatch.End();
 
