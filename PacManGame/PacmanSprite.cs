@@ -18,7 +18,12 @@ namespace PacManGame
         private GameState gs;
         private SpriteBatch spriteBatch;
         private Texture2D imagePacman;
+        private Texture2D imagePacmanUp;
+        private Texture2D imagePacmanDown;
+        private Texture2D imagePacmanLeft;
+        private Texture2D imagePacmanRight;
         private Game1 game;
+      
 
 
 
@@ -44,17 +49,25 @@ namespace PacManGame
         {
             spriteBatch = new SpriteBatch(GraphicsDevice);
             imagePacman = game.Content.Load<Texture2D>("pacman");
+          //  imagePacmanDown = game.Content.Load<Texture2D>("pacmanDOWN");
+         //   imagePacmanLeft = game.Content.Load<Texture2D>("pacmanLEFT");
+         //   imagePacmanRight = game.Content.Load<Texture2D>("pacmanRIGHT");
             base.LoadContent();
         }
         public override void Update(GameTime gameTime)
         {
-            counter++;
-            if (threshold == counter)
+            if (gs.ScoreAndLives.Lives == 0)
             {
-                checkInput();
-                base.Update(gameTime);
-                counter = 0;
-            }
+                
+            }         
+                counter++;
+                if (threshold == counter)
+                {
+                    checkInput();
+                    base.Update(gameTime);
+                    counter = 0;
+                }
+            
         }
 
         private void checkInput()
@@ -123,7 +136,7 @@ namespace PacManGame
                         gs.Pacman.Move(Direction.Down);
                 }
             }
-
+        
             // Once finished checking all keys, update old state.
             oldState = newState;
 
@@ -132,6 +145,8 @@ namespace PacManGame
         public override void Draw(GameTime gameTime)
         {
             spriteBatch.Begin();
+           // var origin = new Vector2(imagePacman.Width, imagePacman.Height);
+            //spriteBatch.Draw(imagePacman, new Rectangle((int)gs.Pacman.PacManPosition.X * 32, (int)gs.Pacman.PacManPosition.Y * 32, 32, 32),null, Color.White,2.99f,origin, SpriteEffects.None, 0f);
             spriteBatch.Draw(imagePacman, new Rectangle((int)gs.Pacman.PacManPosition.X * 32, (int)gs.Pacman.PacManPosition.Y * 32, 32, 32), Color.White);
             spriteBatch.End();
             base.Draw(gameTime);

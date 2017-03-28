@@ -53,9 +53,19 @@ namespace PacManLibrary
         public virtual void deadPacman()
         {
             this.lives -= 1;
+
             if (this.lives == 0)
-                GameOver();
+                onGameOver();
         } 
+
+        protected virtual void onGameOver()
+        {           
+            GameOver();
+        }
+
+
+
+
         /// <summary>
         /// This method increments the score of the game depending on 
         /// the ICollidable object which got passed onto it when the collide 
