@@ -54,7 +54,7 @@ namespace PacManLibrary
             foreach (Ghost g in ghosts)
             {
                 if(g.CurrentState != g.gStates[GhostState.penned])
-                    g.Reset();
+                    g.Reset(g);
             }
         }
         /// <summary>
@@ -62,6 +62,7 @@ namespace PacManLibrary
         /// </summary>
         public void ScareGhost()
         {
+            
             foreach (Ghost g in ghosts)
             {
                 g.ChangeState(GhostState.scared);
