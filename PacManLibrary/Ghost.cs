@@ -18,7 +18,7 @@ namespace PacManLibrary
         //field declarations
         private Pacman pacman;
         private Vector2 target;
-        private Pen pen = new Pen();
+        private Pen pen;
         private Maze maze;
         private static Timer scaredtimer;
         public Dictionary<GhostState, IGhostState> gStates = new Dictionary<GhostState, IGhostState>(3);
@@ -71,6 +71,7 @@ namespace PacManLibrary
         /// <param name="color">colour that the ghost will be painted</param>
         public Ghost(GameState g, int x, int y, Vector2 target, GhostState state, Color color)
         {
+            pen = g.Pen;
             maze = g.Maze;
             this.pacman = g.Pacman;
             CreateStates();
