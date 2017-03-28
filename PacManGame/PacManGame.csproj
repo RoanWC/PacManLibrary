@@ -56,6 +56,7 @@
   <ItemGroup>
     <Content Include="Content\empty.png" />
     <Content Include="Content\energizer.png" />
+    <Content Include="Content\gameOver.png" />
     <Content Include="Content\ghost.png" />
     <Content Include="Content\pacmanDOWN.png" />
     <Content Include="Content\pacmanLEFT.png" />
