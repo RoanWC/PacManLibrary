@@ -64,8 +64,8 @@ namespace PacManGame
         public override void Draw(GameTime gameTime)
         {
             spriteBatch.Begin();
-            spriteBatch.DrawString(font, "Your score is: " + gs.ScoreAndLives.Score, new Vector2(0, 0), Color.White);
-            spriteBatch.DrawString(font, "\nYou have : " + gs.ScoreAndLives.Lives+" Lives", new Vector2(0, 0), Color.White);
+            spriteBatch.DrawString(font, "Your score is: " + gs.ScoreAndLives.Score, new Vector2(0, 0), Color.Black);
+            spriteBatch.DrawString(font, "You have : " + gs.ScoreAndLives.Lives+" Lives", new Vector2(0, 15), Color.Black);
             if (gameover)
             {
 
