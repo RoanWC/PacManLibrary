@@ -25,7 +25,7 @@ namespace PacManLibrary
         //private Tile resetLocation;
         private Vector2 resetLocation;
         private Color acctualColor;
-
+        private GhostPack gp;
         //property declarations
         public Vector2 Position { get; set; }
         public Direction Direction { get; set; }
@@ -71,6 +71,7 @@ namespace PacManLibrary
         /// <param name="color">colour that the ghost will be painted</param>
         public Ghost(GameState g, int x, int y, Vector2 target, GhostState state, Color color)
         {
+            gp = g.Ghostpack;
             pen = g.Pen;
             maze = g.Maze;
             this.pacman = g.Pacman;
@@ -161,7 +162,7 @@ namespace PacManLibrary
             gStates.Add(GhostState.scared, scaredState);
             scaredState.Collision += OnCollision;
 
-            IGhostState chaseState = new Chase(this, maze, target, pacman);
+            IGhostState chaseState = new Chase(this, maze, target, pacman,gp);
             gStates.Add(GhostState.chase, chaseState);
             chaseState.Collision += OnPacManDies;
             

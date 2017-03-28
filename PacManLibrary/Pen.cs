@@ -67,7 +67,7 @@ namespace PacManLibrary
         {
             ghosts.Enqueue(ghost);
             ghost.Position = pen[ghosts.Count - 1].Position;
-            Timer t = new Timer((ghosts.Count * 1000));
+            Timer t = new Timer((ghosts.Count * 5000));
             t.Enabled = true;
             t.Elapsed += Release;
             timers.Add(t);

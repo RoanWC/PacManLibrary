@@ -49,7 +49,7 @@ namespace PacManLibrary
         /// <summary>
         /// resets the ghosts back to the pen when pacman has been eaten.
         /// </summary>
-        public void ResetGhost()
+        public void ResetGhost(ICollidable obj)
         {
             foreach (Ghost g in ghosts)
             {

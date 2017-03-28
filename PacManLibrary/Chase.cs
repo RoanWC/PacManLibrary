@@ -27,12 +27,13 @@ namespace PacManLibrary
         /// <param name="maze">maze that the ghost is in</param>
         /// <param name="target">point that the ghost is moving to</param>
         /// <param name="pacman">pacman </param>
-        public Chase(Ghost ghost, Maze maze, Vector2 target, Pacman pacman)
+        public Chase(Ghost ghost, Maze maze, Vector2 target, Pacman pacman,GhostPack gp)
         {
             this.ghost = ghost;
             this.maze = maze;
             this.pacman = pacman;
             this.target = new Vector2(target.X, target.Y);
+            Collision += gp.ResetGhost;
         }
 
         /// <summary>
