@@ -92,6 +92,7 @@ namespace PacManLibrary
             if (state == GhostState.released)
             {
                 Position = ResetLocation;
+                Color = acctualColor;
                 CurrentState =  gStates[GhostState.chase];
             }
             else
