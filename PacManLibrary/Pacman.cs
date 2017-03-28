@@ -99,14 +99,18 @@ namespace PacManLibrary
             if (!(maze[(int)PacManPosition.X, (int)PacManPosition.Y].IsEmpty()))
             {
                 maze[(int)PacManPosition.X, (int)PacManPosition.Y].Collide();
+               
             }
             // check collisions for pellet or energizer
 
             foreach(Ghost ghost in ghosts)
                {
                  ghost.CheckCollision();
-             
-               }
+                //checks if the ghost's position is the same as Pacman. 
+                // If so, pacman will get back to its original position
+                if(ghost.Position == PacManPosition)
+                    PacManPosition = new Vector2(11, 17);
+            }
         }       
     }
 }
