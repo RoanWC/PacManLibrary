@@ -19,6 +19,7 @@ namespace PacManGame
         private bool gameover = false;
         private SpriteBatch spriteBatch;
         private SpriteFont font;
+        private Texture2D imageGameOver;
         private Game1 game;
         private GameState gs;
         public ScoreSprite(Game1 game, GameState gs)
@@ -48,6 +49,7 @@ namespace PacManGame
         protected override void LoadContent()
         {
             spriteBatch = new SpriteBatch(GraphicsDevice);
+            imageGameOver = game.Content.Load<Texture2D>("gameOver");
             font = game.Content.Load<SpriteFont>("scoreFont");//I dont know where this scorefont comes from
             base.LoadContent();
         }
@@ -64,7 +66,10 @@ namespace PacManGame
             spriteBatch.DrawString(font, "\nYou have : " + gs.ScoreAndLives.Lives+" Lives", new Vector2(0, 0), Color.White);
             if (gameover)
             {
-                spriteBatch.DrawString(font, "You Died ", new Vector2(50, 50), Color.White);
+
+               // spriteBatch.DrawString(font, "You lost", new Vector2(50, 50), Color.White);
+                 spriteBatch.Draw(imageGameOver, new Vector2(0,0), Color.White);
+
             }
             if (pacmanWin)
             {
