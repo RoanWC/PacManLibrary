@@ -48,6 +48,7 @@ namespace PacManLibrary
                     ghost.Direction = Direction.Left;
                     break;
             }
+            Collision += ghost.Reset;
 
             this.ghost = ghost;
             this.maze = maze;

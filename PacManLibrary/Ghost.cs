@@ -4,7 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
-using System.Threading;
+using System.Timers;
+
 
 namespace PacManLibrary
 {
@@ -19,10 +20,11 @@ namespace PacManLibrary
         private Vector2 target;
         private Pen pen = new Pen();
         private Maze maze;
-        private Timer scared;
+        private static Timer scaredtimer;
         public Dictionary<GhostState, IGhostState> gStates = new Dictionary<GhostState, IGhostState>(3);
         //private Tile resetLocation;
         private Vector2 resetLocation;
+        private Color acctualColor;
 
         //property declarations
         public Vector2 Position { get; set; }
@@ -53,6 +55,11 @@ namespace PacManLibrary
             Collision?.Invoke(i);
         }
 
+        static Ghost()
+        {
+            scaredtimer = new Timer();
+        }
+
         /// <summary>
         /// Constructor for the ghost to instanciate its position, state, target and colour
         /// </summary>
@@ -71,6 +78,7 @@ namespace PacManLibrary
             this.target = target;
             ChangeState(state);
             Color = color;
+            acctualColor = color;
         }
         /// <summary>
         /// Changes the ghosts current state
@@ -86,9 +94,27 @@ namespace PacManLibrary
             }
             else
             {
+                if(state == GhostState.scared)
+                {
+                    Color = Color.Blue;
+                    scaredtimer.Interval = 5000;
+                    scaredtimer.Enabled = true;
+                    scaredtimer.Elapsed += ChangeToChase;
+                }
+                else
+                {
+                    Color = acctualColor;
+                }
                 CurrentState = gStates[state];
             }
         }
+        public void ChangeToChase(object sender, ElapsedEventArgs e)
+        {
+            Timer t = (Timer)sender;
+            t.Enabled = false;
+            this.ChangeState(GhostState.chase);
+        }
+
         /// <summary>
         /// Calls the collide method of the ghosts current state.
         /// </summary>
@@ -119,10 +145,12 @@ namespace PacManLibrary
         /// <summary>
         /// resets the ghost back to the pen
         /// </summary>
-        public void Reset()
+        public void Reset(ICollidable obj)
         {
             pen.AddToPen(this);
         }
+        
+        
         /// <summary>
         /// creates the IghostState objects for all the possible states and puts them into a dictionary
         /// </summary>
