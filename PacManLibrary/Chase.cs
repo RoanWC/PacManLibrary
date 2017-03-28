@@ -34,6 +34,7 @@ namespace PacManLibrary
             this.pacman = pacman;
             this.target = new Vector2(target.X, target.Y);
             Collision += gp.ResetGhost;
+            Collision += pacman.ResetPacManPosition;
         }
 
         /// <summary>

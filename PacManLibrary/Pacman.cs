@@ -109,11 +109,11 @@ namespace PacManLibrary
                 //checks if the ghost's position is the same as Pacman. 
                 // If so, pacman will get back to its original position
                 if (ghost.Position == PacManPosition && ghost.CurrentState is Chase)
-                    ResetPacManPosition();
+                    ResetPacManPosition(ghost);
             }
         }
         
-        public void ResetPacManPosition()
+        public void ResetPacManPosition(ICollidable obj)
         {
             PacManPosition = new Vector2(11, 17);
         }       
