@@ -105,7 +105,8 @@ namespace PacManGame
         }
         private void gameEnded()
         {
-            Components.Remove(pacmanSprite); //the ball won’t be updated or drawn any more
+            Components.Remove(pacmanSprite); 
+            Components.Remove(ghostsSprite);
         }
 
 
