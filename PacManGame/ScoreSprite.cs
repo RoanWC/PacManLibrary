@@ -62,11 +62,14 @@ namespace PacManGame
             spriteBatch.Begin();
             spriteBatch.DrawString(font, "Your score is: " + gs.ScoreAndLives.Score, new Vector2(0, 0), Color.White);
             spriteBatch.DrawString(font, "\nYou have : " + gs.ScoreAndLives.Lives+" Lives", new Vector2(0, 0), Color.White);
-            /*if (gameover)
+            if (gameover)
             {
                 spriteBatch.DrawString(font, "You Died ", new Vector2(0, 0), Color.White);
-            }*/
-            //We need a spritebatch to say we win somewhere
+            }
+            if (pacmanWin)
+            {
+                spriteBatch.DrawString(font, "You win ", new Vector2(0, 0), Color.White);
+            }
             spriteBatch.End();
 
             base.Draw(gameTime);

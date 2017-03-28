@@ -47,6 +47,7 @@ namespace PacManGame
             Components.Add(pacmanSprite);
             Components.Add(ghostsSprite);
             Components.Add(scoreSprite);
+            gs.ScoreAndLives.GameOver += gameEnded;
             base.Initialize();
         }
 
