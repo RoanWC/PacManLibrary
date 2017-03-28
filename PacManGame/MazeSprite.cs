@@ -47,7 +47,7 @@ namespace PacManGame
               imageEmpty = game.Content.Load<Texture2D>("empty");
               imageEnergizer = game.Content.Load<Texture2D>("energizer");
               imageGhost = game.Content.Load<Texture2D>("ghost");
-              imagePacman = game.Content.Load<Texture2D>("pacman");
+              imagePacman = game.Content.Load<Texture2D>("pacmanLEFT");
               imagePellet = game.Content.Load<Texture2D>("pellet");
               imageWall = game.Content.Load<Texture2D>("wall");
 

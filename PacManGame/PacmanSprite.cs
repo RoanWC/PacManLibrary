@@ -18,6 +18,7 @@ namespace PacManGame
         private GameState gs;
         private SpriteBatch spriteBatch;
         private Texture2D imagePacman;
+        private Direction dir;
         private Texture2D imagePacmanUp;
         private Texture2D imagePacmanDown;
         private Texture2D imagePacmanLeft;
@@ -48,10 +49,10 @@ namespace PacManGame
         protected override void LoadContent()
         {
             spriteBatch = new SpriteBatch(GraphicsDevice);
-            imagePacman = game.Content.Load<Texture2D>("pacman");
-          //  imagePacmanDown = game.Content.Load<Texture2D>("pacmanDOWN");
-         //   imagePacmanLeft = game.Content.Load<Texture2D>("pacmanLEFT");
-         //   imagePacmanRight = game.Content.Load<Texture2D>("pacmanRIGHT");
+            imagePacmanUp = game.Content.Load<Texture2D>("pacmanUP");
+            imagePacmanDown = game.Content.Load<Texture2D>("pacmanDOWN");
+            imagePacmanLeft = game.Content.Load<Texture2D>("pacmanLEFT");
+            imagePacmanRight = game.Content.Load<Texture2D>("pacmanRIGHT");
             base.LoadContent();
         }
         public override void Update(GameTime gameTime)
@@ -79,6 +80,7 @@ namespace PacManGame
                 if (!oldState.IsKeyDown(Keys.Right))
                 {
                     gs.Pacman.Move(Direction.Right);
+                    dir = Direction.Right;
                     counter = 0; //reset counter with every new keystroke
                 }
                 else
@@ -94,7 +96,9 @@ namespace PacManGame
                 // If not down last update, key has just been pressed.
                 if (!oldState.IsKeyDown(Keys.Left))
                 {
+                   
                     gs.Pacman.Move(Direction.Left);
+                    dir = Direction.Left;
                     counter = 0; //reset counter with every new keystroke
                 }
                 else
@@ -111,6 +115,7 @@ namespace PacManGame
                 if (!oldState.IsKeyDown(Keys.Up))
                 {
                     gs.Pacman.Move(Direction.Up);
+                    dir = Direction.Up;
                     counter = 0; //reset counter with every new keystroke
                 }
                 else
@@ -127,6 +132,7 @@ namespace PacManGame
                 if (!oldState.IsKeyDown(Keys.Down))
                 {
                     gs.Pacman.Move(Direction.Down);
+                    dir = Direction.Down;
                     counter = 0; //reset counter with every new keystroke
                 }
                 else
@@ -145,9 +151,21 @@ namespace PacManGame
         public override void Draw(GameTime gameTime)
         {
             spriteBatch.Begin();
-           // var origin = new Vector2(imagePacman.Width, imagePacman.Height);
-            //spriteBatch.Draw(imagePacman, new Rectangle((int)gs.Pacman.PacManPosition.X * 32, (int)gs.Pacman.PacManPosition.Y * 32, 32, 32),null, Color.White,2.99f,origin, SpriteEffects.None, 0f);
-            spriteBatch.Draw(imagePacman, new Rectangle((int)gs.Pacman.PacManPosition.X * 32, (int)gs.Pacman.PacManPosition.Y * 32, 32, 32), Color.White);
+            switch (dir)
+            {
+                case Direction.Up:
+                    spriteBatch.Draw(imagePacmanUp, new Rectangle((int)gs.Pacman.PacManPosition.X * 32, (int)gs.Pacman.PacManPosition.Y * 32, 32, 32), Color.White);
+                    break;
+                case Direction.Down:
+                    spriteBatch.Draw(imagePacmanDown, new Rectangle((int)gs.Pacman.PacManPosition.X * 32, (int)gs.Pacman.PacManPosition.Y * 32, 32, 32), Color.White);
+                    break;
+                case Direction.Left:
+                    spriteBatch.Draw(imagePacmanLeft, new Rectangle((int)gs.Pacman.PacManPosition.X * 32, (int)gs.Pacman.PacManPosition.Y * 32, 32, 32), Color.White);
+                    break;
+                case Direction.Right:
+                    spriteBatch.Draw(imagePacmanRight, new Rectangle((int)gs.Pacman.PacManPosition.X * 32, (int)gs.Pacman.PacManPosition.Y * 32, 32, 32), Color.White);
+                    break;
+            }
             spriteBatch.End();
             base.Draw(gameTime);
         }
