@@ -68,7 +68,8 @@ namespace PacManGame
             {
 
                // spriteBatch.DrawString(font, "You lost", new Vector2(50, 50), Color.White);
-                 spriteBatch.Draw(imageGameOver, new Vector2(0,0), Color.White);
+                 spriteBatch.Draw(imageGameOver, new Vector2(0,0), Color.Red);
+
 
             }
             if (pacmanWin)
