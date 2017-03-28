@@ -108,9 +108,14 @@ namespace PacManLibrary
                  ghost.CheckCollision();
                 //checks if the ghost's position is the same as Pacman. 
                 // If so, pacman will get back to its original position
-                if(ghost.Position == PacManPosition && ghost.CurrentState is Chase)
-                    PacManPosition = new Vector2(11, 17);
+                if (ghost.Position == PacManPosition && ghost.CurrentState is Chase)
+                    ResetPacManPosition();
             }
+        }
+        
+        public void ResetPacManPosition()
+        {
+            PacManPosition = new Vector2(11, 17);
         }       
     }
 }
