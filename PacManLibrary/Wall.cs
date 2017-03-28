@@ -44,7 +44,7 @@ namespace PacManLibrary
 
         public override bool IsEmpty()
         {
-            throw new NotImplementedException();
+            return true;
         }
 
         public override ICollidable Member()

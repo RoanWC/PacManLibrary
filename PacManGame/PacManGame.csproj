@@ -57,7 +57,10 @@
     <Content Include="Content\empty.png" />
     <Content Include="Content\energizer.png" />
     <Content Include="Content\ghost.png" />
-    <Content Include="Content\pacman.png" />
+    <Content Include="Content\pacmanDOWN.png" />
+    <Content Include="Content\pacmanLEFT.png" />
+    <Content Include="Content\pacmanRIGHT.png" />
+    <Content Include="Content\pacmanUP.png" />
     <Content Include="Content\pellet.png" />
     <Content Include="Content\wall.png" />
     <Content Include="Icon.ico" />

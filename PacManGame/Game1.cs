@@ -47,6 +47,7 @@ namespace PacManGame
             Components.Add(pacmanSprite);
             Components.Add(ghostsSprite);
             Components.Add(scoreSprite);
+            gs.ScoreAndLives.GameOver += gameEnded;
             base.Initialize();
         }
 
@@ -95,8 +96,8 @@ namespace PacManGame
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
             // TODO: Add your drawing code here
-            graphics.PreferredBackBufferHeight = 750;
-            graphics.PreferredBackBufferWidth = 750;
+            graphics.PreferredBackBufferHeight = 736;
+            graphics.PreferredBackBufferWidth = 736;
             graphics.ApplyChanges();
 
 

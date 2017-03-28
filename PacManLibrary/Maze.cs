@@ -129,21 +129,15 @@ namespace PacManLibrary
         /// </summary>
         public void CheckMembersLeft()
         {
-            bool left = true;
-            for(int i = 0;i < Size; i++)
+            bool leftOver = false;
+            for(int i = 0;i < Size && leftOver == false; i++)
             {
-                for(int j = 0;j < Size; j++) {
-                    if(maze[j,i] is Path)
-                        if (maze[j,i].IsEmpty())
-                        {
-                            left = true;
-
-                        }else {
-                            left = false;
-                                }
+                for(int j = 0;j < Size && leftOver == false; j++) {
+                    if (!(maze[j, i].IsEmpty()))
+                        leftOver = true;
                 }
             }
-            if(left)
+            if(!(leftOver))
                 PacmanWon?.Invoke();
         }
     }
