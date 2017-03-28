@@ -15,6 +15,8 @@ namespace PacManGame
 {
     class ScoreSprite : DrawableGameComponent
     {
+        private bool pacmanWin = false;
+        private bool gameover = false;
         private SpriteBatch spriteBatch;
         private SpriteFont font;
         private Game1 game;
@@ -29,12 +31,18 @@ namespace PacManGame
         public override void Initialize()
         {
             base.Initialize();
-            gs.ScoreAndLives.GameOver += gameEnded;
+            gs.ScoreAndLives.GameOver += onGameEnded;
+            gs.Maze.PacmanWon += onPacmanWin;
         }
 
-        private void gameEnded()
+        private void onGameEnded()
         {
-            Console.WriteLine("You dead!");
+            gameover = true;
+        }
+
+        private void onPacmanWin()
+        {
+            pacmanWin = true;
         }
 
         protected override void LoadContent()
@@ -54,6 +62,11 @@ namespace PacManGame
             spriteBatch.Begin();
             spriteBatch.DrawString(font, "Your score is: " + gs.ScoreAndLives.Score, new Vector2(0, 0), Color.White);
             spriteBatch.DrawString(font, "\nYou have : " + gs.ScoreAndLives.Lives+" Lives", new Vector2(0, 0), Color.White);
+            /*if (gameover)
+            {
+                spriteBatch.DrawString(font, "You Died ", new Vector2(0, 0), Color.White);
+            }*/
+            //We need a spritebatch to say we win somewhere
             spriteBatch.End();
 
             base.Draw(gameTime);
