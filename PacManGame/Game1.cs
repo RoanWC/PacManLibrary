@@ -34,7 +34,6 @@ namespace PacManGame
         /// </summary>
         protected override void Initialize()
         {
-            // TODO: Add your initialization logic here
             gs = new GameState();
             gs = GameState.Parse("levels.txt");
 
@@ -84,10 +83,14 @@ namespace PacManGame
             KeyboardState newState = Keyboard.GetState();
             if (newState.IsKeyDown(Keys.Space))
             {
-                var newGame = new Game1();
-                newGame.Run();
+                
+                Components.Remove(mazeSprite);
+                Components.Remove(pacmanSprite);
+                Components.Remove(ghostsSprite);
+                Components.Remove(scoreSprite);
+                Initialize(); 
             }
-            // TODO: Add your update logic here
+            
 
             base.Update(gameTime);
         }
@@ -100,7 +103,6 @@ namespace PacManGame
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
-            // TODO: Add your drawing code here
             graphics.PreferredBackBufferHeight = 736;
             graphics.PreferredBackBufferWidth = 736;
             graphics.ApplyChanges();
