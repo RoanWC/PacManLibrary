@@ -1,4 +1,5 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Microsoft.Xna.Framework;
 using PacManLibrary;
 using System;
 using System.Collections.Generic;
@@ -16,15 +17,13 @@ namespace GameStateTest
         {
             //arrange
             GameState gs = new GameState();
-            gs = GameState.Parse("scaredTest.txt");
+            gs = GameState.Parse("levels.txt");
             //act
+            gs.Ghostpack.Ghosts[0].Move();
             //assert
+            Assert.AreEqual(new Vector2(10, 8), gs.Ghostpack.Ghosts[0].Position);
         }
-        [TestMethod]
-        public void testMoveInvalid()
-        {
-
-        }
+ 
     }
 }
 /*

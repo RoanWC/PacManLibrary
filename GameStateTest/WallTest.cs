@@ -30,13 +30,13 @@ namespace GameStateTest
         }
 
         [TestMethod]
-        [ExpectedException(typeof(NotImplementedException))]
         public void TestIsEmpty()
         {
             //arrange
             Wall wall = new Wall(1, 1);
-            //act
-            wall.IsEmpty();
+
+            //assert
+            Assert.AreEqual(wall.IsEmpty(), true);
         }
     }
 }

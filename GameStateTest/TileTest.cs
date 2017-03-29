@@ -16,7 +16,7 @@ namespace GameStateTest
 
             //act
             //assert
-            Assert.AreEqual(wall1, wall2);
+            Assert.AreEqual(wall1.Position, wall2.Position);
         }
 
         [TestMethod]

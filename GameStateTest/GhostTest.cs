@@ -10,20 +10,6 @@ namespace GameStateTest
     public class GhostTest
     {
         [TestMethod]
-        public void TestConstructor()
-        {
-            //arange
-            GameState gs = new GameState();
-
-            Vector2 target = new Vector2(2, 2);
-
-            //act
-            Ghost ghost = new Ghost(gs, 5, 5, target, GhostState.chase, Color.Red);
-
-            //assert
-            Assert.AreEqual(ghost.Color, Color.Red);
-        }
-        [TestMethod]
         public void testChangeStateReleased()
         {
             //arange
@@ -96,7 +82,7 @@ namespace GameStateTest
             gs = GameState.Parse("levels.txt");
 
             Ghost ghost = gs.Ghostpack.Ghosts[1];
-            ghost.ChangeState(GhostState.chase);
+            ghost.ChangeState(GhostState.scared);
 
             bool eventThrown = false;
             ghost.Collision += (obj) => { eventThrown = true; };
