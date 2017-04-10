@@ -65,6 +65,9 @@
     <Content Include="Content\pellet.png" />
     <Content Include="Content\wall.png" />
     <Content Include="Content\Winner.png" />
+    <Content Include="Files\levels.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Icon.ico" />
   </ItemGroup>
   <ItemGroup>

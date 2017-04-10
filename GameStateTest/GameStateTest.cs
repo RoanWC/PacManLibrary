@@ -15,7 +15,7 @@ namespace GameStateTest
             //arrange 
            GameState gs = new GameState();
         
-            gs = GameState.Parse("levels.txt");
+            gs = GameState.Parse("@Files/levels.txt");
             Maze m = gs.Maze;
 
             // use to make sure pacman is in the right position

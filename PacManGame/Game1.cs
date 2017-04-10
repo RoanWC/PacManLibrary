@@ -35,7 +35,7 @@ namespace PacManGame
         protected override void Initialize()
         {
             gs = new GameState();
-            gs = GameState.Parse("levels.txt");
+            gs = GameState.Parse(@"Files/levels.txt");
 
 
             mazeSprite = new MazeSprite(this, gs);
